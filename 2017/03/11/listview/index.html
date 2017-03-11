@@ -5,12 +5,37 @@
   
   <title>Hello , This is Hexo!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#_ListView的使用
+ListView 是一个控件，一个在垂直列表中显示条目的控件，这些条目的内容来自ListAdapter，（EditText , Button TextView......）
+
+1.布局添加 listview 
+2.找到listview
+3.创建 一个Adapter 适配器，封装4个方法，
+4.创建adapter 对象，设置给listview
+##listview 的优化">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hello , This is Hexo!">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/listview/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo!">
+<meta property="og:description" content="#_ListView的使用
+ListView 是一个控件，一个在垂直列表中显示条目的控件，这些条目的内容来自ListAdapter，（EditText , Button TextView......）
+
+1.布局添加 listview 
+2.找到listview
+3.创建 一个Adapter 适配器，封装4个方法，
+4.创建adapter 对象，设置给listview
+##listview 的优化">
+<meta property="og:updated_time" content="2016-07-27T14:59:54.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello , This is Hexo!">
+<meta name="twitter:description" content="#_ListView的使用
+ListView 是一个控件，一个在垂直列表中显示条目的控件，这些条目的内容来自ListAdapter，（EditText , Button TextView......）
+
+1.布局添加 listview 
+2.找到listview
+3.创建 一个Adapter 适配器，封装4个方法，
+4.创建adapter 对象，设置给listview
+##listview 的优化">
   
     <link rel="alternate" href="/atom.xml" title="Hello , This is Hexo!" type="application/atom+xml">
   
@@ -59,9 +84,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-listview" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-listview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/11/listview/" class="article-date">
   <time datetime="2017-03-11T05:45:43.928Z" itemprop="datePublished">2017-03-11</time>
@@ -139,76 +162,19 @@ c....control....adapter
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-BroadCast" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/11/BroadCast/" class="article-date">
-  <time datetime="2017-03-11T02:22:47.784Z" itemprop="datePublished">2017-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/11/BroadCast/">BroadCastReceiver</a>
-    </h1>
+    <a href="/2017/03/11/BroadCast/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">BroadCastReceiver</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#BroadCastReceiver（广播接收者）<br>    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发</p>
-<pre><code>相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-</code></pre><p>##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，但在Mainfest文件中，并不存在这个权限，这也是谷歌工程师为了安全着想，但是仍然存在这个权限，添加后仍然可以启动。</p>
-<p>##在广播中需要启动一个Activity时需要设置Flag<br>    intent.setFlags(Intent.FLAG_ACTIVTY_NEW_TASK);</p>
-<p>##自定义广播——有序、无序广播</p>
-<pre><code>intent.setAction(&quot;....&quot;);
-
-有序广播可以被终止，数据可以被修改，一级一级被接收，而无需广播V不能被终止，数据不能被修改
-</code></pre><p>##广播里的API</p>
-<pre><code>abortBroadcast（）//终止广播，但在有序广播中，sendOrderedBroadcast()方法中的参数 resultReceiver是一个最终的receiver不会因为设置了此方法而收不到广播，而此最终receiver不要需要在清单文件中配置
-</code></pre><p>##特殊的广播接收者</p>
-<p>###比如操作特别频繁的广播事件， 屏幕的锁屏和解锁、电量的变化。。。。。。   这样的广播接收者在清单文件里面注册无效，所以需要在activity中通过代码的方式来注册。</p>
-<p>###原因：由于手机内存有限，而每次需要处理广播的时间需要启动应用程序才能处理，如果所有的应用都需要在清单中注册这个事件，当锁屏或解锁广播发出时，很多应用都会自发的启动来处理广播事件，从而会占用大量的内存，所以为了避免出现这种情况，android工程师不允许这样做，后面会介绍在service中去处理。。。。。。。</p>
-<pre><code>//1.动态的去注册广播事件
-new ScreenReceiver();
-
-//2.创建intent-filter对象
-IntentFilter filter = new IntentFilter();
-
-//3.添加需要注册的action
-filter.addAction();
-filter.addAction();
-
-//注册广播接收者
-this.registerReceiver();
-
-......
-
-//在destroy（）方法中需要接触广播的注册
-unRegisterReceiver(receiver);
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/11/BroadCast/" data-id="cj04tvcrv0000f0dr3ma7kuxw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
