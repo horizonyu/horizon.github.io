@@ -250,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/listview/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/腾讯云专项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -272,8 +272,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/listview/" itemprop="url">
-                  ListView的使用
+                <a class="post-title-link" href="/2017/03/11/腾讯云专项/" itemprop="url">
+                  未命名
                 </a>
               
             
@@ -289,7 +289,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T13:45:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
                 2017-03-11
               </time>
             
@@ -327,62 +327,892 @@
       
         
           
-            <p>#_ListView的使用</p>
-<pre><code>ListView 是一个控件，一个在垂直列表中显示条目的控件，这些条目的内容来自ListAdapter，（EditText , Button TextView......）
+            <p>#腾讯云服务<br>产品的整个技术实现架构由Android/iOS APP、业务服务器以及腾讯云服务组成。其中，APP负责和用户进行交互，包含的功能模块有：</p>
+<ol>
+<li>注册登录（支持微信、QQ等第三方账号登录）</li>
+<li>课堂助手（语音转文字）</li>
+<li>上传到云（腾讯云对象存储COS+内容分发网络CDN）</li>
+<li>趣味课堂（声音音色变换）</li>
+<li>语音点名（腾讯云智能语音服务Artificial Audio Intelligence）</li>
+<li>课堂点名（腾讯云万象优图的图片处理）</li>
+</ol>
+<p>##开通对象存储服务COS流程：</p>
+<blockquote>
+<p><a href="https://www.qcloud.com/document/product/436/6238" target="_blank" rel="external">https://www.qcloud.com/document/product/436/6238</a></p>
+</blockquote>
+<pre><code>1. [https://www.qcloud.com/product/cos?utm_source=Community&amp;utm_medium=article196&amp;utm_campaign=Community](&quot;链接&quot;)
+2. Bucket 是用户存储在项目下的第一级目录 （类似Windows中的C盘、D盘）。
+</code></pre><p>##腾讯云智能语音服务：</p>
+<p>###长语音全文识别</p>
+<p>####简介<br>长语音全文识别服务使用RESTFUL API识别语音文件，此接口采用HTTPS协议，支持语音URL和本地语音文件两种方式。</p>
+<p>####快速接入<br><img src="http://i.imgur.com/QjHp7ji.png" alt=""></p>
+<ol>
+<li>注册并登陆腾讯云账户。<a href="https://console.qcloud.com/" target="_blank" rel="external">立即注册&gt;&gt;</a></li>
+<li>申请并开通智能语音服务。<a href="http://wj.qq.com/s/423374/ba33" target="_blank" rel="external">立即申请&gt;&gt;</a></li>
+<li>确定RESTFUL API接口参数，参数详情请查看RESTFUL API接口说明。</li>
+<li>调用RESTFUL API 发送请求，上传语音数据，开始语音识别。</li>
+</ol>
+<p>####签名鉴权</p>
+<p>签名本质上是一个<strong>加密的字符串</strong>，加密字符串的<strong>原文字符串由多个字符串按照一定的规则拼接而成</strong>，再利用<strong>加密算法对字符串进行加密处理</strong>生成签名。腾讯云的鉴权系统对签名进行验证，签名有效，则允许用户访问语音全文转换识别服务；若签名无效，则返回Authorization错误消息。本文详细介绍生成签名的流程，并提供了签名实例。</p>
+<p>#####1. 获取签名所需信息<br>需要用户提供以下信息：腾讯云应用ID（appid）、腾讯云项目ID（projectid）、安全凭证SecretID和SecretKey。</p>
+<p>#####2. 生成签名串</p>
+<pre><code>   2.1 参数排序
+将所有的参数按升序排序
 
-1.布局添加 listview 
-2.找到listview
-3.创建 一个Adapter 适配器，封装4个方法，
-4.创建adapter 对象，设置给listview
-</code></pre><p>##listview 的优化<br>    adapter 中 getView()方法，会传进一个 convertview 对象，convertview 是指曾经使用过的view 对象</p>
-<pre><code>@Override
-   public View getView(int position, View convertView, ViewGroup parent) {
+2.2 凭借请求字符串
+将上一步排好序的参数格式化为&quot;参数名称&quot;=&quot;参数值&quot;的形式，然后将格式化后的参数用&quot;&amp;&quot;拼接起来
 
-       TextView view = null;
-           //convertview 缓存 view,即已经创建的但并没有在屏幕上显示的 view,创建的view数量仅为屏幕能够显示的view数量+1，减少资源的浪费，
-           //使用前需要判断，listview 的优化
-           if(convertView != null)
-           {
-               view = (TextView) convertView;
-           }
-           else
-           {
-               view = new TextView(mContext);
-           }
-           view.setText(&quot;position:&quot; + position );
-           view.setTextSize(100);
-           map.put(view.hashCode(),1);
+2.3 拼接原文字符串，由以下几个参数构成
+    2.3.1 请求方法： 
+</code></pre><p>##腾讯云 万象优图<br><code>https://www.qcloud.com/document/product/275/3311</code></p>
+<p>###如何接入</p>
+<ol>
+<li>基本架构及业务流程<ol>
+<li>1 基本架构</li>
+</ol>
+</li>
+</ol>
 
-       System.out.println(&quot;创建了&quot;+map.size()+&quot;个TextView 对象&quot;);
-           return view;
-</code></pre><p>##listview 老虎机<br>    javaweb mvc<br>    m…..mode….javabean<br>    v…..view….jsp<br>    c…..control….servlet</p>
-<pre><code>listview mvc
-m....mode....Bean
-v....view....listview
-c....control....adapter
-</code></pre><p>##listview 显示原理<br>    1.要考虑listview 显示的条目数        getCount<br>    2.考虑listview 每个条目显示的内容        getView<br>    3.考虑每个item的高度,屏幕的多样化<br>    4.考虑listview的滑动，监听一个旧的条目的消失，新的条目的出现</p>
-<p>##复杂listview界面显示，新闻（<strong><strong>**</strong></strong>重要<strong><strong><em>*</em></strong></strong>）、</p>
-<pre><code>1.布局listview
+          
+        
+      
+    </div>
 
-2.找到listview
+    <div>
+      
+    </div>
 
-3.获取新闻数据，封装到list集合，作为adapter的数据源，考虑怎么将获取的数据给adapter
+    <div>
+      
+    </div>
 
-4.创建adapter 继承BaseAdapter ,并且实现4个方法
-    getCount（）：返回新闻的条数
-    getItem()
-    getItemId()
-**    getView(View view,ConvertView convertview,ViewGroup parent):将返回一个复杂的布局作为条目的内容展示；并且显示的数据是新闻信息
-5.将创建的adapter对象设置给 listview
 
-6.设置listview的点击事件，并封装点击事件，去查看新闻详情   *******
-</code></pre><h2 id="新闻客户端案例项目和产品"><a href="#新闻客户端案例项目和产品" class="headerlink" title="新闻客户端案例项目和产品"></a>新闻客户端案例项目和产品</h2><pre><code>第一次进入新闻客户端时需要请求服务器获取新闻，作为listview的展示，为；了第二次能够再次打开客户端时能快速显示新闻，需要将数据缓存到数据库中，下次打开可以直接去数据库中获取新闻做展示，步骤如下：
+    <footer class="post-footer">
+      
 
-1. 写布局，listview 
-2. 找到listview 设置条目的点击事件，
-3. 获取新闻数据，首先去数据库中获取，再去服务器获取数据，如果，数据库已有数据，则显示，然后，获取服务端的数据后需要缓存数据库，  ？？？？？？
-4. 创建一个adapter 集成BaseAdapter 封装四个方法，接收获取的新闻数据
-5. 将adapter设置给listview 。
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/手机卫士/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/手机卫士/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#当使用到tomcat的时候一定要记得将其启动</p>
+<p>##1. 分包：<br>    按照控件进行划分<br>        com.itheima.activity<br>        com.itheima.service<br>        com.itheima.db<br>        com.itheima.mobilesaf.<br>        ……</p>
+<p>##获取软件的版本号<br>    //getVersion()<br>    PackageManager pm = new Packagemanager();<br>    PackageInfo pI = pm.getPackageInfo(getPackageName(), 0);<br>    String version = pI.versionCode + “”;</p>
+<p>##与服务器进行交互的代码</p>
+<pre><code>  //如果服务器有新版本提示用户进行更新
+
+    new Thread() {
+        @Override
+        public void run() {
+            long startTime = System.currentTimeMillis();
+            try {
+                //1.向服务器发送请求数据
+                URL url = new URL(&quot;http://169.254.161.57:8080/update74.json&quot;);
+
+                //2.开启一个链接
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                //3.设置请求的一些参数
+                connection.setConnectTimeout(3000);
+                connection.setReadTimeout(2000);
+                //  connection.setRequestMethod(&quot;GET&quot;);//默认是GET 方式，所以此处可以省略
+
+                //4.判断获得的响应码  200表示连接成功
+                int responseCode = connection.getResponseCode();
+                if (responseCode == 200) {
+                    //5.获取数据流
+                    InputStream inputStream = connection.getInputStream();
+
+                    //6. 将数据以流的形式转化为字符串的形式
+                    String json = StreamUtil.stream2string(inputStream);
+
+                    msg = new Message();
+
+                    //获取json实例，将json格式的数据解析出来
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+
+                        //版本名称
+                        mVersionName = jsonObject.getString(&quot;versionName&quot;);
+                        //版本号
+                        mVersionCode = jsonObject.getString(&quot;versionCode&quot;);
+                        //版本描述
+                        mVersionDes = jsonObject.getString(&quot;versionDes&quot;);
+                        //软件的下载地址
+                        mDownloadUrl = jsonObject.getString(&quot;downloadUrl&quot;);
+
+                        Log.i(&quot;SplashActivity&quot;, mVersionName);
+                        Log.i(&quot;SplashActivity&quot;, mVersionCode);
+                        Log.i(&quot;SplashActivity&quot;, mVersionDes);
+                        Log.i(&quot;SplashActivity&quot;, mDownloadUrl);
+
+                        //如果服务器中的软件的版本号大于手机中的版本号，则进行更新提醒
+                        if (Integer.parseInt(mLocalVersionCode) &lt; Integer.parseInt(mVersionCode)) {
+                            //在此处提示用户进行的提醒
+                            msg.what = UPDATE_VERSION;
+
+                        } else {
+                            //进入程序的主界面
+                            msg.what = ENTER_HOME;
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                //为了保证引导页的效果，所以需要满足在引导页停留4S中的要求
+                long endTime = System.currentTimeMillis();
+                if ((endTime - startTime) &lt; 4000) {
+                    try {
+                        Thread.sleep(4000 - (endTime - startTime));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                //利用Handler的实例，调用sendMessage()方法，将msg信息返回Handler中
+                mHandler.sendMessage(msg);
+            }
+        }
+    }.start();
+
+
+
+
+public static String stream2string(InputStream inputStream) throws IOException {
+    //1. 将流中的数据读取之后放入缓存中，然后 一次性转换为字符串
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+    //2. 创建一个字符数组用于暂存读取流中的数据
+    byte[] bytes = new byte[1024];
+
+    //3.定义一个临时变量，记录读取的数据
+    int temp = -1;
+
+    //4.定义一个循环，依次读入数据
+
+        while ((temp = inputStream.read(bytes) )!= -1){
+            bos.write(bytes,0,temp);
+
+        }
+        //5.返回读取的数据
+          return  bos.toString();
+
+    }
+</code></pre><p>##2. xutils的使用</p>
+<p>###</p>
+<ol>
+<li>导入xutils的jar包</li>
+<li>添加xutils需要使用的权限</li>
+<li><p> <uses-permission android:name="android.permission.InTERTNET"></uses-permission></p>
+ <uses-permission android:name="android.permisssion.WRITE_EXTERNAL_STORAGE">
+
+<pre><code>//程序代码如下，
+ //获取链接以及下载后软件存放的位置
+        String path = Environment.getExternalStorageDirectory().getPath() + File.separator + &quot;mobilesafe74.apk&quot;;
+        HttpUtils utils = new HttpUtils();
+        //调用download()方法，进行下载
+        utils.download(mDownloadUrl, path, new RequestCallBack&lt;File&gt;() {
+            //当下载成功的时候调用
+            @Override
+            public void onSuccess(ResponseInfo&lt;File&gt; responseInfo) {
+                File file = responseInfo.result;
+                Toast.makeText(getApplication(), &quot;下载成功&quot;, Toast.LENGTH_SHORT).show();
+                installApp(file);
+            }
+
+            //下载失败的时候调用
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                Toast.makeText(getApplication(), &quot;下载失败&quot;, Toast.LENGTH_SHORT).show();
+                enterHome();
+
+            }
+
+            //正在下载的时候调用
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+                super.onLoading(total, current, isUploading);
+                System.out.println(&quot;toal:&quot; + total + &quot;,&quot; + &quot;current&quot; + current + &quot;,&quot; + isUploading);
+
+            }
+
+            //下载开始的时候调用
+            @Override
+            public void onStart() {
+                super.onStart();
+                Toast.makeText(SplashActivity.this, &quot;开始下载&quot;, Toast.LENGTH_SHORT).show();
+            }
+        });
+</code></pre></uses-permission></li>
+<li>获取HttpUtils对象，下载指定链接地址的apk</li>
+</ol>
+<p>##3. 打包生成apk的过程</p>
+<pre><code>1. 生成签名文件，并指定所在位置
+2. 使用生成的签名文件，给工程打包成一个apk
+</code></pre><p>##4. 安装apk注意事项：<br>    升级</p>
+<pre><code>1. 注意事项： 将原有的应用覆盖，包名一致
+2. 签名要一致
+3. 注意，在使用本机ip地址进行调试时，在网络状态发生改变时，要及时对服务器的地址进行更新，所以，非常不方便，不建议使用这种方法，。。。。。。。
+</code></pre><p>##5. 安装软件的界面，可以使用系统源码</p>
+<pre><code> //安装软件的方法
+private void installApp(File file) {
+    //隐式调用Intent的方法
+    Intent intent = new Intent(&quot;android.intent.action.VIEW&quot;);
+    //这些信息均在源码中可见
+    //添加category信息
+    intent.addCategory(&quot;android.intent.category.DEFAULT&quot;);
+    //添加data 和 type信息
+    intent.setDataAndType(Uri.fromFile(file),&quot;application/vnd.android.package-archive&quot;);
+    //启动activity
+//    startActivity(intent);
+    //由于需要在安装界面获取用户选择的结果，所以使用startActivity(),方法来调用
+    startActivityForResult(intent,0);
+
+}
+</code></pre><p>###调试时出现的错误  软件内部更新，出现“解析包时出现问题”的错误后停止</p>
+<p>###FATAL EXCEPTION: Thread-426<br>    Process: com.example.horizon.a23_360safe, PID: 20986<br>    java.lang.NullPointerException: Attempt to write to field ‘android.os.Handler android.os.Message.target’ on a null object reference</p>
+<pre><code>错误原因是：
+ 1. 服务器没有开启
+ 2. ip地址不正确
+</code></pre><p>###编写自定义控件</p>
+<pre><code>1. 创建一个类继承TextView
+2. 重写其构造方法，
+3. 将原有textview的isfocus方法修改为默认就能获取焦点
+4. 获取当前类的路径名称，作为标签
+</code></pre><p>###GridView的使用，与使用listview方法类似</p>
+<pre><code>1. 此布局需要数据以及相应的适配器 Adapter，在适配器中，同样需要将布局文件转换成view对象，同样需要获取到相应的控件，给其设置相应的资源属性。
+
+    /**
+ * 为GridView提供数据
+ */
+private void initData() {
+    mTitleStr = new String[]{&quot;手机防盗&quot;, &quot;通信卫士&quot;, &quot;软件管理&quot;, &quot;进程管理&quot;, &quot;流量统计&quot;,
+            &quot;手机杀毒&quot;, &quot;缓存清理&quot;, &quot;高级工具&quot;, &quot;设置中心&quot;};
+    mImgId = new int[]{
+            R.mipmap.home_safe, R.mipmap.home_callmsgsafe,
+            R.mipmap.home_apps, R.mipmap.home_taskmanager,
+            R.mipmap.home_netmanager, R.mipmap.home_trojan,
+            R.mipmap.home_sysoptimize, R.mipmap.home_tools, R.mipmap.home_settings,
+    };
+
+    gv_home.setAdapter(new MyAdapter());
+
+    gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+            switch (position){
+                case 0:
+                    break;
+                  .
+                .
+                .
+                case 8:
+                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                    break;
+
+            }
+        }
+    });
+
+}
+
+private void initUi() {
+    gv_home = (GridView) findViewById(R.id.gv_home);
+}
+
+public class MyAdapter extends BaseAdapter {
+
+    @Override
+    public int getCount() {
+        //图片和文字的数量是一样的
+        return mImgId.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mTitleStr[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = View.inflate(getApplicationContext(), R.layout.function_item, null);
+        iv_item = (ImageView) view.findViewById(R.id.iv_item);
+        tv_item = (TextView) view.findViewById(R.id.tv_item);
+
+        iv_item.setBackgroundResource(mImgId[position]);
+        tv_item.setText(mTitleStr[position]);
+        return view;
+    }
+}
+</code></pre><p>###Sharedpreferences   静态变量不属于任何对象</p>
+<pre><code>1. 当需要在一个Activity中处理完数据后，将数据保存下来，可以将其放入到SharedPreferences 中，下一次在此启动此Activity时，将数据读取出来。
+
+     private static SharedPreferences sp;
+
+/**
+ *
+ * @param context  获取上下文
+ * @param key      节点
+ * @param defValue 节点对应的值
+ * @return         返回点击的状态
+ */
+//获取状态值
+public static boolean getBoolean(Context context,String key,boolean defValue)
+{
+    if(sp == null)
+    sp = context.getSharedPreferences(&quot;config&quot;, Context.MODE_PRIVATE);
+
+    boolean aBoolean = sp.getBoolean(key, defValue);
+
+    return aBoolean;
+}
+
+/**
+ *
+ * @param context  传入上下文
+ * @param key      获取相应的键
+ * @param value    获取相应的键对应的值
+ *
+ */
+   public static void putBoolean(Context context,String key,boolean value)
+    {
+        if(sp == null)
+            sp = context.getSharedPreferences(&quot;config&quot;, Context.MODE_PRIVATE);
+
+        sp.edit().putBoolean(key,value).commit();
+   }
+</code></pre><p>###自定义控件的抽取</p>
+<pre><code>1. 定义一个类继承RelativeLayout;
+2. 复写其中的三个构造方法；
+3. 在有默认属性的构造方法中 将使用的SettingItemView 的xml文件转换成view对象，
+    接着获取xml文件中的控件，
+4. 构造函数的属性 有一个 AttributeSet 类型，这是属性集合，包含可以通过此属性集合获取自定义控件的自定义属性
+
+     /**
+     * @param attrs 属性集合，自定义的一些属性都可以通过此获取
+     * 注意命名空间的使用 
+     */
+        private void initAttrs(AttributeSet attrs) {
+     mDestitle = attrs.getAttributeValue(NAMESPACE, &quot;destitle&quot;);
+    mDesoff = attrs.getAttributeValue(NAMESPACE, &quot;desoff&quot;);
+    mDeson = attrs.getAttributeValue(NAMESPACE, &quot;deson&quot;);
+}
+</code></pre><p>###自定义属性的使用：</p>
+<pre><code>1. 需要定义名空间此应用中需要用到的是：xmlns:mobilsafe=&quot;http://schemas.android.com/apk/res/com.example.horizon.a23_360safe&quot;；
+2. 获取属性值： 在抽取的SettingItemView中的构造函数中，通过AttributeSet 属性集合获取到具体 自定义的几个属性，由于在xml文件中已经为其赋值，所以可以将其直接赋给TextView控件。
+    1.
+     private void initAttrs(AttributeSet attrs) {
+     mDestitle = attrs.getAttributeValue(NAMESPACE, &quot;destitle&quot;);
+     mDesoff = attrs.getAttributeValue(NAMESPACE, &quot;desoff&quot;);
+     mDeson = attrs.getAttributeValue(NAMESPACE, &quot;deson&quot;);
+}
+
+3. 接下来就可以在SettingActivity中，为其设置点击事件。
+</code></pre><p>###内容提供器ContentProvider的使用</p>
+<pre><code>1. 获取内容提供者
+ContentProvider provider = getContentProvider();
+2. 查询数据库表过程，注意添加读取联系人权限
+Cursor cursor = provider.query(Uri.parse(&quot;content://com.andorid.contacts/raw_contacts&quot;),new String[]{&quot;contact_id&quot;},null,null,null);
+3. 读取联系人操作可能是一个耗时操作，所以将其放到子线程中去执行
+</code></pre><p>###TODO</p>
+<p>###activity之间跳转动画</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/多媒体/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/多媒体/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#多媒体</p>
+<p>##1. 计算机表示图形的几种方式：</p>
+<p>###图形的大小 = 图片的总像素 <em> 每个像素的大小<br>    如：800</em>400像素的图片  320000/8 = 40000 byte </p>
+<p>####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；</p>
+<p>####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的位二进制表示  那么每个像素占1/2 byte ;</p>
+<p>####-256色： （每个像素最多可以表示256种颜色） 0000 0000 - 1111 1111  只需要使用长度为8的位二进制表示 ,每个像素占1 byte ;</p>
+<p>####-24位：rgb r 1byte, g 1byte, b 1byte  一个 像素占3个byte</p>
+<p>####-在andoroid 下 采用ARGB A 表示透明度， 一个像素表示4byte </p>
+<p>####-图片：2400<em>3200 ， 手机 320</em>480 ，宽缩放 ：7，高缩放：6，所以按照宽缩放进行，</p>
+<pre><code>所以需要想办法获取需要 缩放的图片的像素 以及 手机的像素
+</code></pre><p>####获取手机的分辨率  windowManager</p>
+<pre><code>WindowManager wm = getSystemService(WINDOW_SERVICE);
+wm.getDefaultDisplay().getWidth(); //手机的宽
+wm.getDefaultDisplay().getHeight(); //手机的高
+</code></pre><p>####获取图片的分辨率 ,并显示出来</p>
+<pre><code>       BitmapFactory.Options option = new BitmapFactory.Options();
+
+//   If set to true, the decoder will return null (no bitmap), but
+//   * the out... fields will still be set, allowing the caller to query
+//    * the bitmap without having to allocate the memory for its pixels.
+            //如果设置为true则会返回空
+            option.inMutable = true;
+            //从方法放回的bitmap为空，但是却可以设置他的一些参数
+            Bitmap bitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
+
+            //获取图片的分辨率
+            int imgWidth = option.outWidth;
+            int imgHeight = option.outHeight;
+
+            //设置图图片的缩放
+            int scale = 1;
+            int scalex= imgWidth/width;
+            int scaley = imgHeight/height;
+
+            if(scalex &gt;= scaley &amp;&amp; scalex &gt; scale)
+            {
+                scale = scalex;
+            }
+            else if(scaley &gt; scalex &amp;&amp; scaley &gt; scale){
+                scale = scaley;
+            }
+
+            //确定图片的缩放
+            option.inSampleSize = scale;
+            option.inMutable = false;
+
+            //将jpg类型的图片解析为bitmap类型
+            Bitmap imgBitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
+            iv.setImageBitmap(imgBitmap);
+</code></pre><p>###创建原图的副本</p>
+<pre><code>//下面实现拷贝原图
+              //创建模板
+              copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+              //创建一个画布对象
+              canvas = new Canvas(copyBitmap);
+              //创建一个画笔对象
+              paint = new Paint();
+
+
+              matrix = new Matrix();
+                canvas.drawBitmap(srcBitmap, matrix, paint);
+
+                 iv_copy.setImageBitmap(copyBitmap);
+</code></pre><p>###将图片进行旋转</p>
+<pre><code>matrix.setRotate(i += 20, copyBitmap.getWidth() / 2, copyBitmap.getHeight() / 2);
+</code></pre><p>###图片的倒影</p>
+<p>##画板案例</p>
+<p>###实现原理就是以一张图片作为复制的模板，创建出一个副本，由于原图片无法修改，所以只能在图片的副本上面进行修改</p>
+<pre><code>//根据图片创建一个Bitmap对象，依据此对象创建图片的副本
+ srcBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pre19);
+
+    //创建图片的副本
+    copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+    //获得画布对象
+    canvas = new Canvas(copyBitmap);
+    //    获得画笔对象
+    paint = new Paint();
+
+    //依据原图的bitmap对象进行画图
+    canvas.drawBitmap(srcBitmap,new Matrix(),paint);
+
+    iv_before.setImageBitmap(copyBitmap);
+</code></pre><p>###SurfaceView </p>
+<pre><code>1. 内部维护了两个线程：
+    1. A 负责获取数据；
+    2. B 负责显示
+2. 可以直接在子线程更新UI，与进度相关的控件。。。。。。
+</code></pre><p>###videoView    显示有一个video文件</p>
+<pre><code>1. 就是对SurfaceView 和 MediaPlayer进行封装；
+2. mediaplayer 播放视频，只支持3gp,mp4格式，
+</code></pre><p>###vitamio</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/圆角矩形/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/圆角矩形/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##2016.11.11 周五 图书馆三楼 </p>
+<p>##1. 圆角矩形的使用<br>    1）首先设置圆角矩形的属性</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:shape=&quot;rectangle&quot;&gt;
+    &lt;gradient
+        android:startColor=&quot;#ffffff&quot;
+        android:endColor=&quot;#ffffff&quot;
+        android:angle=&quot;45&quot;/&gt;
+    &lt;!--设置填充的颜色--&gt;
+    &lt;solid android:color=&quot;@color/colorGreen&quot;/&gt;
+    &lt;!--设置圆角的半径--&gt;
+    &lt;corners android:radius=&quot;5dp&quot;/&gt;
+
+    &lt;!--设置文字与控件的距离--&gt;
+    &lt;padding
+        android:left=&quot;5dp&quot;
+        android:right=&quot;5dp&quot;
+        android:top=&quot;5dp&quot;
+        android:bottom=&quot;5dp&quot;/&gt;
+&lt;/shape&gt;
+
+2）其次设置一个选择器，将此图片作为其中的一种状态
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:drawable=&quot;@drawable/gradient_box&quot; android:state_pressed=&quot;true&quot;/&gt;
+    &lt;item android:drawable=&quot;@android:color/transparent&quot;/&gt;
+&lt;/selector&gt;
+
+3）将次选择器作为控件的背景
+
+ android:background=&quot;@drawable/selector_reset_bc&quot;
+</code></pre><p>##2. sim卡变更报警</p>
+<pre><code>SIM卡存储了其唯一性的序列号在本地，如果SIM卡发生变化，其序列号和存储在本地的序列号有差异，此时向预先设置好的安全号码发送短信。
+
+    //1.获取存储在本地的sim卡的序列号
+    String localSerialNumber = SpUtil.getString(context, ConstantValues.PHONE_NUMBER, &quot;&quot;);
+
+    //2.获取插入爱手机中的sim卡的序列号(TelephonyManager)
+    TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    String simSerialNumber = tm.getSimSerialNumber();
+
+    //3.将两个序列号进行比对
+    if(!localSerialNumber.equals(simSerialNumber)){
+        //4.如果不相等，则向安全手机发送报警短信
+            //获取预先设置的安全号码
+        String safeNumber = SpUtil.getString(context, ConstantValues.CONTACT_PHONE, &quot;&quot;);
+        SmsManager sm = SmsManager.getDefault();
+        sm.sendTextMessage(safeNumber,null,&quot;sim changed! pay attetion!&quot;,null,null);
+    }
+
+    //5.同时不能忘记在Manifest文件所做的变化：
+        //设置广播接收器
+         &lt;receiver android:name=&quot;com.example.horizon.a23_360safe_receiver.a23_360safe_Receiver&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+        &lt;/intent-filter&gt;
+          &lt;/receiver&gt;
+
+        //增加权限
+         &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;/&gt;
+            &lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
 </code></pre>
           
         
@@ -423,7 +1253,7 @@ c....control....adapter
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/BroadCast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/xml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -445,8 +1275,8 @@ c....control....adapter
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/BroadCast/" itemprop="url">
-                  BroadCastReceiver
+                <a class="post-title-link" href="/2017/03/11/xml/" itemprop="url">
+                  未命名
                 </a>
               
             
@@ -462,7 +1292,7 @@ c....control....adapter
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T10:22:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
                 2017-03-11
               </time>
             
@@ -500,37 +1330,693 @@ c....control....adapter
       
         
           
-            <p>#BroadCastReceiver（广播接收者）<br>    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发</p>
-<pre><code>相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-</code></pre><p>##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，但在Mainfest文件中，并不存在这个权限，这也是谷歌工程师为了安全着想，但是仍然存在这个权限，添加后仍然可以启动。</p>
-<p>##在广播中需要启动一个Activity时需要设置Flag<br>    intent.setFlags(Intent.FLAG_ACTIVTY_NEW_TASK);</p>
-<p>##自定义广播——有序、无序广播</p>
-<pre><code>intent.setAction(&quot;....&quot;);
+            <p>#XML（Extensible Markup Language,可扩展标记语言）<br>    用于数据存储，由于使用标签，层次比较清晰，而且比较严谨，</p>
+<p>##1. XML语法 （标签/标记）</p>
+<pre><code>第一段：
+    &lt;网址&gt;www..itcast.cn&lt;网址&gt;
+第二段：
+    &lt;网址&gt;
+        www.itcast.cn
+    &lt;网址&gt;  表示两个不同的数据，因为xml用于保存数据，两者保存的数据不同，因为后者包含换行和空格
+区分大小写、不能以数字或“_”（下划线）开头、不能以xml（或XML、或Xml等）开头、不能包含空格、名称之间不能包含冒号（：）
+</code></pre><p>##2. 数据解析（挖矿）<br>    解析： 读取xml,将xml中的数据提取出来——<br>            ——Dom解析 （Document Object Model）    核心思想：把文档内容都封装成对象，保存在内存中，并且操作方便，又因为内存有限，会占用大量的内存。所以在使用增删改查比较频繁时使用，不适用于资源匮乏的设备上，（android）<br>            （把矿里的东西都搬回来，结构也不会改变）</p>
+<pre><code>        ——Sax解析 原理：事件驱动，读取从头到尾，直到解析完整个文档
+              优点：在读取xml文档中，已经根据定义好的事件，对xml内容进行了筛选，解析完成后，内存中保留了我们想要的内容，比较节约资源，在资源比较匮乏的平台使用
+              缺点：没有保留文档的结构，无法进行增删改的操作；
 
-有序广播可以被终止，数据可以被修改，一级一级被接收，而无需广播V不能被终止，数据不能被修改
-</code></pre><p>##广播里的API</p>
-<pre><code>abortBroadcast（）//终止广播，但在有序广播中，sendOrderedBroadcast()方法中的参数 resultReceiver是一个最终的receiver不会因为设置了此方法而收不到广播，而此最终receiver不要需要在清单文件中配置
-</code></pre><p>##特殊的广播接收者</p>
-<p>###比如操作特别频繁的广播事件， 屏幕的锁屏和解锁、电量的变化。。。。。。   这样的广播接收者在清单文件里面注册无效，所以需要在activity中通过代码的方式来注册。</p>
-<p>###原因：由于手机内存有限，而每次需要处理广播的时间需要启动应用程序才能处理，如果所有的应用都需要在清单中注册这个事件，当锁屏或解锁广播发出时，很多应用都会自发的启动来处理广播事件，从而会占用大量的内存，所以为了避免出现这种情况，android工程师不允许这样做，后面会介绍在service中去处理。。。。。。。</p>
-<pre><code>//1.动态的去注册广播事件
-new ScreenReceiver();
+             （告诉工人在遇到特定的矿石的时候进行不同的处理，进行筛选，但结构会改变）（手机、平板...）
+        ···············································································
+            sax中的事件：
+                ·文档开始的事件： startDocument
+                ·文档结束的事件： endDocument
+                ·元素开始的事件： startElement
+                ·文本时间：        character
 
-//2.创建intent-filter对象
-IntentFilter filter = new IntentFilter();
+        ——Pull解析（android官方指定）类似于Sax，都属于事件驱动的解析方式，但读取更灵活，以事件为单位，手动向下继续，如果获得我们要找的内容，就可以停止。
+public class PullTool{
+        //使用Pull解析
+        //1 创建解析器工厂
+        public static             
 
-//3.添加需要注册的action
-filter.addAction();
-filter.addAction();
+        //2 使用工厂创建解析器
+        //3 使用解析器读取xml    
 
-//注册广播接收者
-this.registerReceiver();
-
-......
-
-//在destroy（）方法中需要接触广播的注册
-unRegisterReceiver(receiver);
+        }
+</code></pre><p>##3. JDBC<br>    操作步骤：</p>
+<pre><code>1. 注册驱动
+2. 获得连接
+3. 创建Statement对象、
+4. 执行sql语句、
+5. 关闭资源
 </code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/webpage_source/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/webpage_source/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#01.网页html查看器</p>
+<h1 id="新闻案例-网络版"><a href="#新闻案例-网络版" class="headerlink" title="新闻案例 网络版"></a>新闻案例 网络版</h1><pre><code>1 第一次进入新闻客户端需要请求服务器获取新闻数据，作listview 展示，为了第二次打开新闻客户端时能快速显示新闻，需要将数据缓存到数据库中，下次打开可以直接去数据库数据库中获取新闻做展示
+
+1 写布局 listview
+
+2 找到listview ，设置条目的点击事件
+
+3 获取新闻数据，首先去数据库中获取，再去服务器获取数据，获取服务端的数据成功后，需要缓存数据库。
+
+4 创建一个Adapter ,继承BaseAdapter，封装4个方法，需要接收获取的新闻数据
+
+5 将Adapter 设置给listview。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/tomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/tomcat/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Tomcat</p>
+<p>##·Tomcat的安装</p>
+<p>##·Tomcat的目录结构</p>
+<p>##·修改Tomcat的默认端口号<br>    tomcat/conf/sever.xml =&gt; Connector 元素 port属性</p>
+<p>##·静态Web项目<br>    Web项目就是一个文件夹。<br>    静态web项目：文件夹中都是静态资源    </p>
+<p>##·将web项目部署到tomcat<br>    将web项目的文件夹复制到webapps目录下</p>
+<p>##·创建动态web项目<br>    满足如下目录结构：<br>        项目目录<br>            |-WEB-INF 文件夹            项目配置文件夹 ，该文件夹下的内容，浏览器访问不到<br>                |-classess 文件夹      放置web项目的字节码文件<br>                |-lib        文件夹    项目中需要使用的第三方的类库<br>                |-web.xml  文件        web项目唯一配置文件</p>
+<p>##·tomcat与eclipse的结合<br>    *如何将tomcat配置到eclipse，如何启动与关闭</p>
+<p>##·在eclipse创建动态web项目</p>
+<p>#Servlet<br>    动态资源：不同的人在不同的时间看到不同的结果</p>
+<pre><code>一个小的java程序，运行在web服务器，接受响应来自浏览器的请求，通过http
+
+一些步骤如下：
+    ·构造servlet 然后初始化servlet
+    ·处理任何来自浏览器的请求
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/Spark开发指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/Spark开发指南/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Spark 开发指南</p>
+<p>###简介</p>
+<ol>
+<li><p>Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从节点故障中恢复。</p>
+</li>
+<li><p>Spark提供的第二个抽象概念是共享变量，它可以在并行操作中使用。默认情况下，Spark通过不同节点的一些列任务来运行一个函数。它将每一个函数中用到的变量的拷贝传递到每一个任务中。有时候，一个变量需要在不同的任务之间、或者任务和驱动程序之间共享。Spark支持两种类型的变量共享：广播变量，可以在所有节点中缓存一个值；累加器，一个只能做加法的变量，例如计数器和求和。</p>
+</li>
+</ol>
+<p>###弹性分布式数据集RDDS<br>Spark 反复围绕的一个概念是弹性分布式数据集，它是一个有容错机制的元素集合，并且可以被并行操作。有两种创建RDDS的方法，<strong>并行化你的驱动程序的已有的集合</strong>，或者<strong>引用一个外部存储系统的数据集</strong>，例如一个文件系统，HDFS、HBase,或者任何可以提供一个Hadoop　InputFormat的数据源。</p>
+<p>##Spark 运行架构</p>
+<p>###1. 术语定义</p>
+<ol>
+<li>Application : Spark Application 和 Hadoop MapReduce中的类似，指的是用户编写的Spark用户程序，包含了一个 Driver 功能的代码和分布在集群中多个节点上运行的Executor代码；</li>
+<li>Driver : Spark中的Driver即运行上述Application的main()函数并且创建SparkContext，其中创建SparkContext的目的是为了准备Spark应用程序的运行环境。在Spark中由SparkContext负责和ClusterManager通信，进行资源的申请、任务的分配和监控等；当Executor部分运行完毕后，Driver负责将SparkContext关闭。<strong><em>通常用SparkContext代表Driver;</em></strong></li>
+<li>Executor : Application 运行在worker节点上的一个进程，该进程负责运行Task ，并且负责将数据存储在内存或者磁盘上，每个Application 都有各自独立的一批Execuotr。</li>
+</ol>
+<p>###2. Spark 运行基本流程</p>
+<p><img src="http://i.imgur.com/aNFW4Bw.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/snap(stanford network analysis platform)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/snap(stanford network analysis platform)/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#SNAP Installation and Compilation</p>
+<p>##准备条件</p>
+<pre><code>1. 在window下 snap 运行在visual studio 中，保证编译器安装完成
+2. snap 要求安装用于 绘画和展示图形类包， 
+     Gnuplot： for plotting structural properties of networks (e.g., degree distribution);
+     Graphviz： for drawing and visualizing small graphs.
+</code></pre><p><strong>Set the system PATH variable, so that Gnuplot and Graphviz are available, or put the executables in the working directory.</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/SharedPreference/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/SharedPreference/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#-SharedPreference基础知识</p>
+<p>##1、向 SharedPreference 中插入数据</p>
+<p>###1)、通过 Context 对象创建一个SharedPreferenceduixang 对象:<br>    //name:shared..的名称，mode: 文件的操作模式<br>    SharedPreference sharedPreference = Context.getSharedpreferences(name,mode);</p>
+<p>###2)、<strong>得到一个Editor对象:</strong><br>    Editor editor = sharedPreference.editor();</p>
+<p>###3)、向 Editor 中添加数据:<br>    //向editor 里面以 key-value 的形式存放数据<br>    editor.putString(key,value);</p>
+<p>###4)、提交 Editor 对象    :<br>    //最后就是通过 commit() 方法提交<br>    editor.commit();</p>
+<p>##2、从 SharedPreference 中取出数据：</p>
+<p>###1)、通过 Context 对象创建一个SharedPreferenceduixang 对象:<br>    //name:shared..的名称，mode: 文件的操作模式<br>    SharedPreference sharedPreference = Context.getSharedpreferences(name,mode);</p>
+<p>###2)、使用 SharedPreference 的 getString() 方法获取数据<br>    //key 代表存入的键，deValue 代表默认的值，即当 key 不存在的时候使用此值<br>    String userName = sharedPreference.getString(key,deValue);<br>    Stirng passsWord = sharedPreference.getString(key,deValue);</p>
+<p>##sharedPreference 是通过xml文件来作为数据存储；（—-用来存放一些标记性数据，或是一些设置信息—-典型的案例就是软件的欢迎界面，第一次安装软件时，会进入到欢迎界面，但以后再次进入时就不再出现，就是因为在第一次进入到软件时会更改一些变量，用于标记是否是第一次使用。所以如果在手机的设置中点击清除软件的数据和缓存后，再次进入页面，就会出现欢迎界面。。。。。。）</p>
+<p>##通过PreferenceManager.getDefaultSharedPreference(Context)创建 SharedPreference 对象，这是另外一种创建sharedPreference 对象的方式</p>
+
           
         
       
@@ -564,6 +2050,10 @@ unRegisterReceiver(receiver);
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
           
           </div>
@@ -606,7 +2096,7 @@ unRegisterReceiver(receiver);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

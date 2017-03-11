@@ -87,22 +87,37 @@
 
 
 
-<meta name="description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="description" content="#XML（Extensible Markup Language,可扩展标记语言）    用于数据存储，由于使用标签，层次比较清晰，而且比较严谨，
+##1. XML语法 （标签/标记）
+第一段：
+    &amp;lt;网址&amp;gt;www..itcast.cn&amp;lt;网址&amp;gt;
+第二段：
+    &amp;lt;网址&amp;gt;
+        www.itcast.cn
+    &amp;lt;网址&amp;gt;  表示两个不同">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BroadCastReceiver">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/BroadCast/index.html">
+<meta property="og:title" content="Hello , This is Hexo !">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/xml/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
-<meta property="og:updated_time" content="2017-03-11T02:24:27.211Z">
+<meta property="og:description" content="#XML（Extensible Markup Language,可扩展标记语言）    用于数据存储，由于使用标签，层次比较清晰，而且比较严谨，
+##1. XML语法 （标签/标记）
+第一段：
+    &amp;lt;网址&amp;gt;www..itcast.cn&amp;lt;网址&amp;gt;
+第二段：
+    &amp;lt;网址&amp;gt;
+        www.itcast.cn
+    &amp;lt;网址&amp;gt;  表示两个不同">
+<meta property="og:updated_time" content="2016-07-25T15:05:29.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BroadCastReceiver">
-<meta name="twitter:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="twitter:title" content="Hello , This is Hexo !">
+<meta name="twitter:description" content="#XML（Extensible Markup Language,可扩展标记语言）    用于数据存储，由于使用标签，层次比较清晰，而且比较严谨，
+##1. XML语法 （标签/标记）
+第一段：
+    &amp;lt;网址&amp;gt;www..itcast.cn&amp;lt;网址&amp;gt;
+第二段：
+    &amp;lt;网址&amp;gt;
+        www.itcast.cn
+    &amp;lt;网址&amp;gt;  表示两个不同">
 
 
 
@@ -130,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/11/BroadCast/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/xml/"/>
 
 
 
 
 
-  <title> BroadCastReceiver | Hello , This is Hexo ! </title>
+  <title>  | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/BroadCast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/xml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -276,7 +291,7 @@
             
             
               
-                BroadCastReceiver
+                
               
             
           </h1>
@@ -291,7 +306,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T10:22:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
                 2017-03-11
               </time>
             
@@ -327,36 +342,44 @@
       
 
       
-        <p>#BroadCastReceiver（广播接收者）<br>    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发</p>
-<pre><code>相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-</code></pre><p>##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，但在Mainfest文件中，并不存在这个权限，这也是谷歌工程师为了安全着想，但是仍然存在这个权限，添加后仍然可以启动。</p>
-<p>##在广播中需要启动一个Activity时需要设置Flag<br>    intent.setFlags(Intent.FLAG_ACTIVTY_NEW_TASK);</p>
-<p>##自定义广播——有序、无序广播</p>
-<pre><code>intent.setAction(&quot;....&quot;);
+        <p>#XML（Extensible Markup Language,可扩展标记语言）<br>    用于数据存储，由于使用标签，层次比较清晰，而且比较严谨，</p>
+<p>##1. XML语法 （标签/标记）</p>
+<pre><code>第一段：
+    &lt;网址&gt;www..itcast.cn&lt;网址&gt;
+第二段：
+    &lt;网址&gt;
+        www.itcast.cn
+    &lt;网址&gt;  表示两个不同的数据，因为xml用于保存数据，两者保存的数据不同，因为后者包含换行和空格
+区分大小写、不能以数字或“_”（下划线）开头、不能以xml（或XML、或Xml等）开头、不能包含空格、名称之间不能包含冒号（：）
+</code></pre><p>##2. 数据解析（挖矿）<br>    解析： 读取xml,将xml中的数据提取出来——<br>            ——Dom解析 （Document Object Model）    核心思想：把文档内容都封装成对象，保存在内存中，并且操作方便，又因为内存有限，会占用大量的内存。所以在使用增删改查比较频繁时使用，不适用于资源匮乏的设备上，（android）<br>            （把矿里的东西都搬回来，结构也不会改变）</p>
+<pre><code>        ——Sax解析 原理：事件驱动，读取从头到尾，直到解析完整个文档
+              优点：在读取xml文档中，已经根据定义好的事件，对xml内容进行了筛选，解析完成后，内存中保留了我们想要的内容，比较节约资源，在资源比较匮乏的平台使用
+              缺点：没有保留文档的结构，无法进行增删改的操作；
 
-有序广播可以被终止，数据可以被修改，一级一级被接收，而无需广播V不能被终止，数据不能被修改
-</code></pre><p>##广播里的API</p>
-<pre><code>abortBroadcast（）//终止广播，但在有序广播中，sendOrderedBroadcast()方法中的参数 resultReceiver是一个最终的receiver不会因为设置了此方法而收不到广播，而此最终receiver不要需要在清单文件中配置
-</code></pre><p>##特殊的广播接收者</p>
-<p>###比如操作特别频繁的广播事件， 屏幕的锁屏和解锁、电量的变化。。。。。。   这样的广播接收者在清单文件里面注册无效，所以需要在activity中通过代码的方式来注册。</p>
-<p>###原因：由于手机内存有限，而每次需要处理广播的时间需要启动应用程序才能处理，如果所有的应用都需要在清单中注册这个事件，当锁屏或解锁广播发出时，很多应用都会自发的启动来处理广播事件，从而会占用大量的内存，所以为了避免出现这种情况，android工程师不允许这样做，后面会介绍在service中去处理。。。。。。。</p>
-<pre><code>//1.动态的去注册广播事件
-new ScreenReceiver();
+             （告诉工人在遇到特定的矿石的时候进行不同的处理，进行筛选，但结构会改变）（手机、平板...）
+        ···············································································
+            sax中的事件：
+                ·文档开始的事件： startDocument
+                ·文档结束的事件： endDocument
+                ·元素开始的事件： startElement
+                ·文本时间：        character
 
-//2.创建intent-filter对象
-IntentFilter filter = new IntentFilter();
+        ——Pull解析（android官方指定）类似于Sax，都属于事件驱动的解析方式，但读取更灵活，以事件为单位，手动向下继续，如果获得我们要找的内容，就可以停止。
+public class PullTool{
+        //使用Pull解析
+        //1 创建解析器工厂
+        public static             
 
-//3.添加需要注册的action
-filter.addAction();
-filter.addAction();
+        //2 使用工厂创建解析器
+        //3 使用解析器读取xml    
 
-//注册广播接收者
-this.registerReceiver();
-
-......
-
-//在destroy（）方法中需要接触广播的注册
-unRegisterReceiver(receiver);
+        }
+</code></pre><p>##3. JDBC<br>    操作步骤：</p>
+<pre><code>1. 注册驱动
+2. 获得连接
+3. 创建Statement对象、
+4. 执行sql语句、
+5. 关闭资源
 </code></pre>
       
     </div>
@@ -387,14 +410,18 @@ unRegisterReceiver(receiver);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/11/webpage_source/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/listview/" rel="prev" title="ListView的使用">
-                ListView的使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/11/圆角矩形/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

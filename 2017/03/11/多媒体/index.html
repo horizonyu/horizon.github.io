@@ -87,22 +87,28 @@
 
 
 
-<meta name="description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BroadCastReceiver">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/BroadCast/index.html">
+<meta property="og:title" content="Hello , This is Hexo !">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/多媒体/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
-<meta property="og:updated_time" content="2017-03-11T02:24:27.211Z">
+<meta property="og:description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
+<meta property="og:updated_time" content="2016-08-15T14:11:53.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BroadCastReceiver">
-<meta name="twitter:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="twitter:title" content="Hello , This is Hexo !">
+<meta name="twitter:description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
 
 
 
@@ -130,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/11/BroadCast/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/多媒体/"/>
 
 
 
 
 
-  <title> BroadCastReceiver | Hello , This is Hexo ! </title>
+  <title>  | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/BroadCast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/多媒体/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -276,7 +282,7 @@
             
             
               
-                BroadCastReceiver
+                
               
             
           </h1>
@@ -291,7 +297,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T10:22:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
                 2017-03-11
               </time>
             
@@ -327,37 +333,98 @@
       
 
       
-        <p>#BroadCastReceiver（广播接收者）<br>    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发</p>
-<pre><code>相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-</code></pre><p>##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，但在Mainfest文件中，并不存在这个权限，这也是谷歌工程师为了安全着想，但是仍然存在这个权限，添加后仍然可以启动。</p>
-<p>##在广播中需要启动一个Activity时需要设置Flag<br>    intent.setFlags(Intent.FLAG_ACTIVTY_NEW_TASK);</p>
-<p>##自定义广播——有序、无序广播</p>
-<pre><code>intent.setAction(&quot;....&quot;);
+        <p>#多媒体</p>
+<p>##1. 计算机表示图形的几种方式：</p>
+<p>###图形的大小 = 图片的总像素 <em> 每个像素的大小<br>    如：800</em>400像素的图片  320000/8 = 40000 byte </p>
+<p>####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；</p>
+<p>####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的位二进制表示  那么每个像素占1/2 byte ;</p>
+<p>####-256色： （每个像素最多可以表示256种颜色） 0000 0000 - 1111 1111  只需要使用长度为8的位二进制表示 ,每个像素占1 byte ;</p>
+<p>####-24位：rgb r 1byte, g 1byte, b 1byte  一个 像素占3个byte</p>
+<p>####-在andoroid 下 采用ARGB A 表示透明度， 一个像素表示4byte </p>
+<p>####-图片：2400<em>3200 ， 手机 320</em>480 ，宽缩放 ：7，高缩放：6，所以按照宽缩放进行，</p>
+<pre><code>所以需要想办法获取需要 缩放的图片的像素 以及 手机的像素
+</code></pre><p>####获取手机的分辨率  windowManager</p>
+<pre><code>WindowManager wm = getSystemService(WINDOW_SERVICE);
+wm.getDefaultDisplay().getWidth(); //手机的宽
+wm.getDefaultDisplay().getHeight(); //手机的高
+</code></pre><p>####获取图片的分辨率 ,并显示出来</p>
+<pre><code>       BitmapFactory.Options option = new BitmapFactory.Options();
 
-有序广播可以被终止，数据可以被修改，一级一级被接收，而无需广播V不能被终止，数据不能被修改
-</code></pre><p>##广播里的API</p>
-<pre><code>abortBroadcast（）//终止广播，但在有序广播中，sendOrderedBroadcast()方法中的参数 resultReceiver是一个最终的receiver不会因为设置了此方法而收不到广播，而此最终receiver不要需要在清单文件中配置
-</code></pre><p>##特殊的广播接收者</p>
-<p>###比如操作特别频繁的广播事件， 屏幕的锁屏和解锁、电量的变化。。。。。。   这样的广播接收者在清单文件里面注册无效，所以需要在activity中通过代码的方式来注册。</p>
-<p>###原因：由于手机内存有限，而每次需要处理广播的时间需要启动应用程序才能处理，如果所有的应用都需要在清单中注册这个事件，当锁屏或解锁广播发出时，很多应用都会自发的启动来处理广播事件，从而会占用大量的内存，所以为了避免出现这种情况，android工程师不允许这样做，后面会介绍在service中去处理。。。。。。。</p>
-<pre><code>//1.动态的去注册广播事件
-new ScreenReceiver();
+//   If set to true, the decoder will return null (no bitmap), but
+//   * the out... fields will still be set, allowing the caller to query
+//    * the bitmap without having to allocate the memory for its pixels.
+            //如果设置为true则会返回空
+            option.inMutable = true;
+            //从方法放回的bitmap为空，但是却可以设置他的一些参数
+            Bitmap bitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
 
-//2.创建intent-filter对象
-IntentFilter filter = new IntentFilter();
+            //获取图片的分辨率
+            int imgWidth = option.outWidth;
+            int imgHeight = option.outHeight;
 
-//3.添加需要注册的action
-filter.addAction();
-filter.addAction();
+            //设置图图片的缩放
+            int scale = 1;
+            int scalex= imgWidth/width;
+            int scaley = imgHeight/height;
 
-//注册广播接收者
-this.registerReceiver();
+            if(scalex &gt;= scaley &amp;&amp; scalex &gt; scale)
+            {
+                scale = scalex;
+            }
+            else if(scaley &gt; scalex &amp;&amp; scaley &gt; scale){
+                scale = scaley;
+            }
 
-......
+            //确定图片的缩放
+            option.inSampleSize = scale;
+            option.inMutable = false;
 
-//在destroy（）方法中需要接触广播的注册
-unRegisterReceiver(receiver);
-</code></pre>
+            //将jpg类型的图片解析为bitmap类型
+            Bitmap imgBitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
+            iv.setImageBitmap(imgBitmap);
+</code></pre><p>###创建原图的副本</p>
+<pre><code>//下面实现拷贝原图
+              //创建模板
+              copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+              //创建一个画布对象
+              canvas = new Canvas(copyBitmap);
+              //创建一个画笔对象
+              paint = new Paint();
+
+
+              matrix = new Matrix();
+                canvas.drawBitmap(srcBitmap, matrix, paint);
+
+                 iv_copy.setImageBitmap(copyBitmap);
+</code></pre><p>###将图片进行旋转</p>
+<pre><code>matrix.setRotate(i += 20, copyBitmap.getWidth() / 2, copyBitmap.getHeight() / 2);
+</code></pre><p>###图片的倒影</p>
+<p>##画板案例</p>
+<p>###实现原理就是以一张图片作为复制的模板，创建出一个副本，由于原图片无法修改，所以只能在图片的副本上面进行修改</p>
+<pre><code>//根据图片创建一个Bitmap对象，依据此对象创建图片的副本
+ srcBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pre19);
+
+    //创建图片的副本
+    copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+    //获得画布对象
+    canvas = new Canvas(copyBitmap);
+    //    获得画笔对象
+    paint = new Paint();
+
+    //依据原图的bitmap对象进行画图
+    canvas.drawBitmap(srcBitmap,new Matrix(),paint);
+
+    iv_before.setImageBitmap(copyBitmap);
+</code></pre><p>###SurfaceView </p>
+<pre><code>1. 内部维护了两个线程：
+    1. A 负责获取数据；
+    2. B 负责显示
+2. 可以直接在子线程更新UI，与进度相关的控件。。。。。。
+</code></pre><p>###videoView    显示有一个video文件</p>
+<pre><code>1. 就是对SurfaceView 和 MediaPlayer进行封装；
+2. mediaplayer 播放视频，只支持3gp,mp4格式，
+</code></pre><p>###vitamio</p>
+
       
     </div>
 
@@ -387,14 +454,18 @@ unRegisterReceiver(receiver);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/11/圆角矩形/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/listview/" rel="prev" title="ListView的使用">
-                ListView的使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/11/手机卫士/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

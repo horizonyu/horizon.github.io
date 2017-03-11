@@ -1,0 +1,969 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="#当使用到tomcat的时候一定要记得将其启动
+##1. 分包：    按照控件进行划分        com.itheima.activity        com.itheima.service        com.itheima.db        com.itheima.mobilesaf.        ……
+##获取软件的版本号    //getVersion()    Packag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello , This is Hexo !">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/手机卫士/index.html">
+<meta property="og:site_name" content="Hello , This is Hexo !">
+<meta property="og:description" content="#当使用到tomcat的时候一定要记得将其启动
+##1. 分包：    按照控件进行划分        com.itheima.activity        com.itheima.service        com.itheima.db        com.itheima.mobilesaf.        ……
+##获取软件的版本号    //getVersion()    Packag">
+<meta property="og:updated_time" content="2016-09-28T16:25:29.345Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hello , This is Hexo !">
+<meta name="twitter:description" content="#当使用到tomcat的时候一定要记得将其启动
+##1. 分包：    按照控件进行划分        com.itheima.activity        com.itheima.service        com.itheima.db        com.itheima.mobilesaf.        ……
+##获取软件的版本号    //getVersion()    Packag">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/手机卫士/"/>
+
+
+
+
+
+  <title>  | Hello , This is Hexo ! </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello , This is Hexo !</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你好</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/手机卫士/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#当使用到tomcat的时候一定要记得将其启动</p>
+<p>##1. 分包：<br>    按照控件进行划分<br>        com.itheima.activity<br>        com.itheima.service<br>        com.itheima.db<br>        com.itheima.mobilesaf.<br>        ……</p>
+<p>##获取软件的版本号<br>    //getVersion()<br>    PackageManager pm = new Packagemanager();<br>    PackageInfo pI = pm.getPackageInfo(getPackageName(), 0);<br>    String version = pI.versionCode + “”;</p>
+<p>##与服务器进行交互的代码</p>
+<pre><code>  //如果服务器有新版本提示用户进行更新
+
+    new Thread() {
+        @Override
+        public void run() {
+            long startTime = System.currentTimeMillis();
+            try {
+                //1.向服务器发送请求数据
+                URL url = new URL(&quot;http://169.254.161.57:8080/update74.json&quot;);
+
+                //2.开启一个链接
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                //3.设置请求的一些参数
+                connection.setConnectTimeout(3000);
+                connection.setReadTimeout(2000);
+                //  connection.setRequestMethod(&quot;GET&quot;);//默认是GET 方式，所以此处可以省略
+
+                //4.判断获得的响应码  200表示连接成功
+                int responseCode = connection.getResponseCode();
+                if (responseCode == 200) {
+                    //5.获取数据流
+                    InputStream inputStream = connection.getInputStream();
+
+                    //6. 将数据以流的形式转化为字符串的形式
+                    String json = StreamUtil.stream2string(inputStream);
+
+                    msg = new Message();
+
+                    //获取json实例，将json格式的数据解析出来
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+
+                        //版本名称
+                        mVersionName = jsonObject.getString(&quot;versionName&quot;);
+                        //版本号
+                        mVersionCode = jsonObject.getString(&quot;versionCode&quot;);
+                        //版本描述
+                        mVersionDes = jsonObject.getString(&quot;versionDes&quot;);
+                        //软件的下载地址
+                        mDownloadUrl = jsonObject.getString(&quot;downloadUrl&quot;);
+
+                        Log.i(&quot;SplashActivity&quot;, mVersionName);
+                        Log.i(&quot;SplashActivity&quot;, mVersionCode);
+                        Log.i(&quot;SplashActivity&quot;, mVersionDes);
+                        Log.i(&quot;SplashActivity&quot;, mDownloadUrl);
+
+                        //如果服务器中的软件的版本号大于手机中的版本号，则进行更新提醒
+                        if (Integer.parseInt(mLocalVersionCode) &lt; Integer.parseInt(mVersionCode)) {
+                            //在此处提示用户进行的提醒
+                            msg.what = UPDATE_VERSION;
+
+                        } else {
+                            //进入程序的主界面
+                            msg.what = ENTER_HOME;
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                //为了保证引导页的效果，所以需要满足在引导页停留4S中的要求
+                long endTime = System.currentTimeMillis();
+                if ((endTime - startTime) &lt; 4000) {
+                    try {
+                        Thread.sleep(4000 - (endTime - startTime));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                //利用Handler的实例，调用sendMessage()方法，将msg信息返回Handler中
+                mHandler.sendMessage(msg);
+            }
+        }
+    }.start();
+
+
+
+
+public static String stream2string(InputStream inputStream) throws IOException {
+    //1. 将流中的数据读取之后放入缓存中，然后 一次性转换为字符串
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+    //2. 创建一个字符数组用于暂存读取流中的数据
+    byte[] bytes = new byte[1024];
+
+    //3.定义一个临时变量，记录读取的数据
+    int temp = -1;
+
+    //4.定义一个循环，依次读入数据
+
+        while ((temp = inputStream.read(bytes) )!= -1){
+            bos.write(bytes,0,temp);
+
+        }
+        //5.返回读取的数据
+          return  bos.toString();
+
+    }
+</code></pre><p>##2. xutils的使用</p>
+<p>###</p>
+<ol>
+<li>导入xutils的jar包</li>
+<li>添加xutils需要使用的权限</li>
+<li><p> <uses-permission android:name="android.permission.InTERTNET"></uses-permission></p>
+ <uses-permission android:name="android.permisssion.WRITE_EXTERNAL_STORAGE">
+
+<pre><code>//程序代码如下，
+ //获取链接以及下载后软件存放的位置
+        String path = Environment.getExternalStorageDirectory().getPath() + File.separator + &quot;mobilesafe74.apk&quot;;
+        HttpUtils utils = new HttpUtils();
+        //调用download()方法，进行下载
+        utils.download(mDownloadUrl, path, new RequestCallBack&lt;File&gt;() {
+            //当下载成功的时候调用
+            @Override
+            public void onSuccess(ResponseInfo&lt;File&gt; responseInfo) {
+                File file = responseInfo.result;
+                Toast.makeText(getApplication(), &quot;下载成功&quot;, Toast.LENGTH_SHORT).show();
+                installApp(file);
+            }
+
+            //下载失败的时候调用
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                Toast.makeText(getApplication(), &quot;下载失败&quot;, Toast.LENGTH_SHORT).show();
+                enterHome();
+
+            }
+
+            //正在下载的时候调用
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+                super.onLoading(total, current, isUploading);
+                System.out.println(&quot;toal:&quot; + total + &quot;,&quot; + &quot;current&quot; + current + &quot;,&quot; + isUploading);
+
+            }
+
+            //下载开始的时候调用
+            @Override
+            public void onStart() {
+                super.onStart();
+                Toast.makeText(SplashActivity.this, &quot;开始下载&quot;, Toast.LENGTH_SHORT).show();
+            }
+        });
+</code></pre></uses-permission></li>
+<li>获取HttpUtils对象，下载指定链接地址的apk</li>
+</ol>
+<p>##3. 打包生成apk的过程</p>
+<pre><code>1. 生成签名文件，并指定所在位置
+2. 使用生成的签名文件，给工程打包成一个apk
+</code></pre><p>##4. 安装apk注意事项：<br>    升级</p>
+<pre><code>1. 注意事项： 将原有的应用覆盖，包名一致
+2. 签名要一致
+3. 注意，在使用本机ip地址进行调试时，在网络状态发生改变时，要及时对服务器的地址进行更新，所以，非常不方便，不建议使用这种方法，。。。。。。。
+</code></pre><p>##5. 安装软件的界面，可以使用系统源码</p>
+<pre><code> //安装软件的方法
+private void installApp(File file) {
+    //隐式调用Intent的方法
+    Intent intent = new Intent(&quot;android.intent.action.VIEW&quot;);
+    //这些信息均在源码中可见
+    //添加category信息
+    intent.addCategory(&quot;android.intent.category.DEFAULT&quot;);
+    //添加data 和 type信息
+    intent.setDataAndType(Uri.fromFile(file),&quot;application/vnd.android.package-archive&quot;);
+    //启动activity
+//    startActivity(intent);
+    //由于需要在安装界面获取用户选择的结果，所以使用startActivity(),方法来调用
+    startActivityForResult(intent,0);
+
+}
+</code></pre><p>###调试时出现的错误  软件内部更新，出现“解析包时出现问题”的错误后停止</p>
+<p>###FATAL EXCEPTION: Thread-426<br>    Process: com.example.horizon.a23_360safe, PID: 20986<br>    java.lang.NullPointerException: Attempt to write to field ‘android.os.Handler android.os.Message.target’ on a null object reference</p>
+<pre><code>错误原因是：
+ 1. 服务器没有开启
+ 2. ip地址不正确
+</code></pre><p>###编写自定义控件</p>
+<pre><code>1. 创建一个类继承TextView
+2. 重写其构造方法，
+3. 将原有textview的isfocus方法修改为默认就能获取焦点
+4. 获取当前类的路径名称，作为标签
+</code></pre><p>###GridView的使用，与使用listview方法类似</p>
+<pre><code>1. 此布局需要数据以及相应的适配器 Adapter，在适配器中，同样需要将布局文件转换成view对象，同样需要获取到相应的控件，给其设置相应的资源属性。
+
+    /**
+ * 为GridView提供数据
+ */
+private void initData() {
+    mTitleStr = new String[]{&quot;手机防盗&quot;, &quot;通信卫士&quot;, &quot;软件管理&quot;, &quot;进程管理&quot;, &quot;流量统计&quot;,
+            &quot;手机杀毒&quot;, &quot;缓存清理&quot;, &quot;高级工具&quot;, &quot;设置中心&quot;};
+    mImgId = new int[]{
+            R.mipmap.home_safe, R.mipmap.home_callmsgsafe,
+            R.mipmap.home_apps, R.mipmap.home_taskmanager,
+            R.mipmap.home_netmanager, R.mipmap.home_trojan,
+            R.mipmap.home_sysoptimize, R.mipmap.home_tools, R.mipmap.home_settings,
+    };
+
+    gv_home.setAdapter(new MyAdapter());
+
+    gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+            switch (position){
+                case 0:
+                    break;
+                  .
+                .
+                .
+                case 8:
+                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                    break;
+
+            }
+        }
+    });
+
+}
+
+private void initUi() {
+    gv_home = (GridView) findViewById(R.id.gv_home);
+}
+
+public class MyAdapter extends BaseAdapter {
+
+    @Override
+    public int getCount() {
+        //图片和文字的数量是一样的
+        return mImgId.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mTitleStr[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = View.inflate(getApplicationContext(), R.layout.function_item, null);
+        iv_item = (ImageView) view.findViewById(R.id.iv_item);
+        tv_item = (TextView) view.findViewById(R.id.tv_item);
+
+        iv_item.setBackgroundResource(mImgId[position]);
+        tv_item.setText(mTitleStr[position]);
+        return view;
+    }
+}
+</code></pre><p>###Sharedpreferences   静态变量不属于任何对象</p>
+<pre><code>1. 当需要在一个Activity中处理完数据后，将数据保存下来，可以将其放入到SharedPreferences 中，下一次在此启动此Activity时，将数据读取出来。
+
+     private static SharedPreferences sp;
+
+/**
+ *
+ * @param context  获取上下文
+ * @param key      节点
+ * @param defValue 节点对应的值
+ * @return         返回点击的状态
+ */
+//获取状态值
+public static boolean getBoolean(Context context,String key,boolean defValue)
+{
+    if(sp == null)
+    sp = context.getSharedPreferences(&quot;config&quot;, Context.MODE_PRIVATE);
+
+    boolean aBoolean = sp.getBoolean(key, defValue);
+
+    return aBoolean;
+}
+
+/**
+ *
+ * @param context  传入上下文
+ * @param key      获取相应的键
+ * @param value    获取相应的键对应的值
+ *
+ */
+   public static void putBoolean(Context context,String key,boolean value)
+    {
+        if(sp == null)
+            sp = context.getSharedPreferences(&quot;config&quot;, Context.MODE_PRIVATE);
+
+        sp.edit().putBoolean(key,value).commit();
+   }
+</code></pre><p>###自定义控件的抽取</p>
+<pre><code>1. 定义一个类继承RelativeLayout;
+2. 复写其中的三个构造方法；
+3. 在有默认属性的构造方法中 将使用的SettingItemView 的xml文件转换成view对象，
+    接着获取xml文件中的控件，
+4. 构造函数的属性 有一个 AttributeSet 类型，这是属性集合，包含可以通过此属性集合获取自定义控件的自定义属性
+
+     /**
+     * @param attrs 属性集合，自定义的一些属性都可以通过此获取
+     * 注意命名空间的使用 
+     */
+        private void initAttrs(AttributeSet attrs) {
+     mDestitle = attrs.getAttributeValue(NAMESPACE, &quot;destitle&quot;);
+    mDesoff = attrs.getAttributeValue(NAMESPACE, &quot;desoff&quot;);
+    mDeson = attrs.getAttributeValue(NAMESPACE, &quot;deson&quot;);
+}
+</code></pre><p>###自定义属性的使用：</p>
+<pre><code>1. 需要定义名空间此应用中需要用到的是：xmlns:mobilsafe=&quot;http://schemas.android.com/apk/res/com.example.horizon.a23_360safe&quot;；
+2. 获取属性值： 在抽取的SettingItemView中的构造函数中，通过AttributeSet 属性集合获取到具体 自定义的几个属性，由于在xml文件中已经为其赋值，所以可以将其直接赋给TextView控件。
+    1.
+     private void initAttrs(AttributeSet attrs) {
+     mDestitle = attrs.getAttributeValue(NAMESPACE, &quot;destitle&quot;);
+     mDesoff = attrs.getAttributeValue(NAMESPACE, &quot;desoff&quot;);
+     mDeson = attrs.getAttributeValue(NAMESPACE, &quot;deson&quot;);
+}
+
+3. 接下来就可以在SettingActivity中，为其设置点击事件。
+</code></pre><p>###内容提供器ContentProvider的使用</p>
+<pre><code>1. 获取内容提供者
+ContentProvider provider = getContentProvider();
+2. 查询数据库表过程，注意添加读取联系人权限
+Cursor cursor = provider.query(Uri.parse(&quot;content://com.andorid.contacts/raw_contacts&quot;),new String[]{&quot;contact_id&quot;},null,null,null);
+3. 读取联系人操作可能是一个耗时操作，所以将其放到子线程中去执行
+</code></pre><p>###TODO</p>
+<p>###activity之间跳转动画</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/多媒体/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/11/腾讯云专项/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Horizon Yu" />
+          <p class="site-author-name" itemprop="name">Horizon Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description">天行健，君子自强不息；地势坤，君子以厚德载物。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Horizon Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

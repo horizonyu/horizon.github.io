@@ -87,22 +87,28 @@
 
 
 
-<meta name="description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="description" content="##2016.11.11 周五 图书馆三楼 
+##1. 圆角矩形的使用    1）首先设置圆角矩形的属性
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;shape
+    xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BroadCastReceiver">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/BroadCast/index.html">
+<meta property="og:title" content="Hello , This is Hexo !">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/圆角矩形/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
-<meta property="og:updated_time" content="2017-03-11T02:24:27.211Z">
+<meta property="og:description" content="##2016.11.11 周五 图书馆三楼 
+##1. 圆角矩形的使用    1）首先设置圆角矩形的属性
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;shape
+    xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;">
+<meta property="og:updated_time" content="2016-11-11T16:34:29.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BroadCastReceiver">
-<meta name="twitter:description" content="#BroadCastReceiver（广播接收者）    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发
-相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，">
+<meta name="twitter:title" content="Hello , This is Hexo !">
+<meta name="twitter:description" content="##2016.11.11 周五 图书馆三楼 
+##1. 圆角矩形的使用    1）首先设置圆角矩形的属性
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;shape
+    xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;">
 
 
 
@@ -130,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/11/BroadCast/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/圆角矩形/"/>
 
 
 
 
 
-  <title> BroadCastReceiver | Hello , This is Hexo ! </title>
+  <title>  | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -255,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/BroadCast/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/圆角矩形/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -276,7 +282,7 @@
             
             
               
-                BroadCastReceiver
+                
               
             
           </h1>
@@ -291,7 +297,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T10:22:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
                 2017-03-11
               </time>
             
@@ -327,36 +333,70 @@
       
 
       
-        <p>#BroadCastReceiver（广播接收者）<br>    android系统内部相当于已经有一个电台，定义了很多广播事件，接收广播需要broadCastReceiver,目的就是方便开发者进行开发</p>
-<pre><code>相当于创建一个activity，需要继承BroadCastReceiver，重写onCreate()方法，并在MainFest中添加注册
-</code></pre><p>##需要注意的是，在需要获取手机接收信息时的广播，需要设置权限，但在Mainfest文件中，并不存在这个权限，这也是谷歌工程师为了安全着想，但是仍然存在这个权限，添加后仍然可以启动。</p>
-<p>##在广播中需要启动一个Activity时需要设置Flag<br>    intent.setFlags(Intent.FLAG_ACTIVTY_NEW_TASK);</p>
-<p>##自定义广播——有序、无序广播</p>
-<pre><code>intent.setAction(&quot;....&quot;);
+        <p>##2016.11.11 周五 图书馆三楼 </p>
+<p>##1. 圆角矩形的使用<br>    1）首先设置圆角矩形的属性</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:shape=&quot;rectangle&quot;&gt;
+    &lt;gradient
+        android:startColor=&quot;#ffffff&quot;
+        android:endColor=&quot;#ffffff&quot;
+        android:angle=&quot;45&quot;/&gt;
+    &lt;!--设置填充的颜色--&gt;
+    &lt;solid android:color=&quot;@color/colorGreen&quot;/&gt;
+    &lt;!--设置圆角的半径--&gt;
+    &lt;corners android:radius=&quot;5dp&quot;/&gt;
 
-有序广播可以被终止，数据可以被修改，一级一级被接收，而无需广播V不能被终止，数据不能被修改
-</code></pre><p>##广播里的API</p>
-<pre><code>abortBroadcast（）//终止广播，但在有序广播中，sendOrderedBroadcast()方法中的参数 resultReceiver是一个最终的receiver不会因为设置了此方法而收不到广播，而此最终receiver不要需要在清单文件中配置
-</code></pre><p>##特殊的广播接收者</p>
-<p>###比如操作特别频繁的广播事件， 屏幕的锁屏和解锁、电量的变化。。。。。。   这样的广播接收者在清单文件里面注册无效，所以需要在activity中通过代码的方式来注册。</p>
-<p>###原因：由于手机内存有限，而每次需要处理广播的时间需要启动应用程序才能处理，如果所有的应用都需要在清单中注册这个事件，当锁屏或解锁广播发出时，很多应用都会自发的启动来处理广播事件，从而会占用大量的内存，所以为了避免出现这种情况，android工程师不允许这样做，后面会介绍在service中去处理。。。。。。。</p>
-<pre><code>//1.动态的去注册广播事件
-new ScreenReceiver();
+    &lt;!--设置文字与控件的距离--&gt;
+    &lt;padding
+        android:left=&quot;5dp&quot;
+        android:right=&quot;5dp&quot;
+        android:top=&quot;5dp&quot;
+        android:bottom=&quot;5dp&quot;/&gt;
+&lt;/shape&gt;
 
-//2.创建intent-filter对象
-IntentFilter filter = new IntentFilter();
+2）其次设置一个选择器，将此图片作为其中的一种状态
 
-//3.添加需要注册的action
-filter.addAction();
-filter.addAction();
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:drawable=&quot;@drawable/gradient_box&quot; android:state_pressed=&quot;true&quot;/&gt;
+    &lt;item android:drawable=&quot;@android:color/transparent&quot;/&gt;
+&lt;/selector&gt;
 
-//注册广播接收者
-this.registerReceiver();
+3）将次选择器作为控件的背景
 
-......
+ android:background=&quot;@drawable/selector_reset_bc&quot;
+</code></pre><p>##2. sim卡变更报警</p>
+<pre><code>SIM卡存储了其唯一性的序列号在本地，如果SIM卡发生变化，其序列号和存储在本地的序列号有差异，此时向预先设置好的安全号码发送短信。
 
-//在destroy（）方法中需要接触广播的注册
-unRegisterReceiver(receiver);
+    //1.获取存储在本地的sim卡的序列号
+    String localSerialNumber = SpUtil.getString(context, ConstantValues.PHONE_NUMBER, &quot;&quot;);
+
+    //2.获取插入爱手机中的sim卡的序列号(TelephonyManager)
+    TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    String simSerialNumber = tm.getSimSerialNumber();
+
+    //3.将两个序列号进行比对
+    if(!localSerialNumber.equals(simSerialNumber)){
+        //4.如果不相等，则向安全手机发送报警短信
+            //获取预先设置的安全号码
+        String safeNumber = SpUtil.getString(context, ConstantValues.CONTACT_PHONE, &quot;&quot;);
+        SmsManager sm = SmsManager.getDefault();
+        sm.sendTextMessage(safeNumber,null,&quot;sim changed! pay attetion!&quot;,null,null);
+    }
+
+    //5.同时不能忘记在Manifest文件所做的变化：
+        //设置广播接收器
+         &lt;receiver android:name=&quot;com.example.horizon.a23_360safe_receiver.a23_360safe_Receiver&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+        &lt;/intent-filter&gt;
+          &lt;/receiver&gt;
+
+        //增加权限
+         &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;/&gt;
+            &lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
 </code></pre>
       
     </div>
@@ -387,14 +427,18 @@ unRegisterReceiver(receiver);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/11/xml/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/listview/" rel="prev" title="ListView的使用">
-                ListView的使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/11/多媒体/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
