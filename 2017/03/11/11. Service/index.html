@@ -87,28 +87,25 @@
 
 
 
-<meta name="description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="description" content="#service服务    android 中的服务在后台进行，没有界面的activity
+##1. 进程的概念        四大组件都是运行在主线程中
+##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
+（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello , This is Hexo !">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/index.html">
+<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/11. Service/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
-<meta property="og:updated_time" content="2016-07-31T04:29:43.439Z">
+<meta property="og:description" content="#service服务    android 中的服务在后台进行，没有界面的activity
+##1. 进程的概念        四大组件都是运行在主线程中
+##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
+（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
+<meta property="og:updated_time" content="2016-08-09T06:05:56.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello , This is Hexo !">
-<meta name="twitter:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="twitter:description" content="#service服务    android 中的服务在后台进行，没有界面的activity
+##1. 进程的概念        四大组件都是运行在主线程中
+##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
+（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
 
 
 
@@ -136,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/11. Service/"/>
 
 
 
@@ -271,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/11. Service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -326,8 +323,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/8.sendMessage实现过程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/8.sendMessage实现过程/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/11. Service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/11. Service/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,179 +350,143 @@
       
 
       
-        <p>#activity之间的跳转、数据传递、listview的数据显示</p>
-<p>此应用实现的功能如下：<br>    1 点击添加按钮，可实现添加联系人的功能；<br>    2 点击消息模板按钮，可实现添加消息模板的功能；</p>
-<p>##添加联系人的功能</p>
-<ol>
-<li><p>☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 Intent 和 RequestCode 此部分的代码如下:</p>
-<pre><code>//MainActivity.java
-//添加联系人的点击事件
-    bt_add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
+        <p>#service服务<br>    android 中的服务在后台进行，没有界面的activity</p>
+<p>##1. 进程的概念<br>        四大组件都是运行在主线程中</p>
+<p>##2. 进程的生命周期，<br>    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1</p>
+<pre><code>（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity是的onResume（）方法，聚焦
+（2）visible process 可见进程 用户没有交互  但用户能看得见页面  相当于activity 的 onPause（）方法 ，不聚焦，但可见
+（3）service process 服务进程 通过startService()开启一个服务
+（4）background process 后台进程  当前用户不可见 相当于activity 的 执行了 onStop（）方法
+（5）empty process 空进程 不会维持任何组件运行 但不会被立即杀死   为了能够缓存  提高下一次启动的速度
+</code></pre><p>##3. start方式开启服务的特点<br>    android 中的服务在后台进行，没有界面的activity<br>    定义四大组件的方式都是一样的<br>    定义一个类继承service</p>
+<pre><code>activity 你大爷是service
 
-            //requestCode 请求码
-            startActivityForResult(intent, 1);
-        }
-    });
+特点：
+      1. 服务通过startservice 方式开启，第一次点击按钮开启服务 会执行服务的onCreate 和 onStart 方法
+      2. 如果第二次开始在点击按钮开启服务  服务之后执行 onStart方法
+      3. 服务被开启后， 会在设置页面里面的running ；里面找得到这个服务
+      4. startservice 方式开启服务 服务就会在后台长期运行 直到用户手动停止 或者调用stopService 方法  服务才会被销毁 
+</code></pre><p>##4. 电话窃听器案例<br>    new Thread(){}.start();   //实时更新  有可能被杀死 但如果放在服务里面是不会被被动杀死的，除非主动调用一些方法</p>
+<pre><code>服务和线程的区别：  
+</code></pre><p>###新的API TelephonyManager  通过getSystenService（TELEPHONY_SERVICE）</p>
+<ol>
+<li><p>获取电话管理者的实例</p>
+<pre><code>//1. 获取电话管理者的实例
+TelephonyManager tm =  (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 </code></pre></li>
 </ol>
 <ol>
-<li><p>相应的在ContactActivity中，由于联系人信息是由listview显示出来，所以需要涉及到listview适配器的设置，代码如下,其中在contactAdapter中主要用到的是getCount()和getView（）方法：</p>
-<pre><code>//ContactActivity.java
-//listview适配器的设置
-lv_contact.setAdapter(new contactAdapter());
-......
- private class contactAdapter extends BaseAdapter{
-    @Override
-    public int getCount() {
-        return arrayListContact.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
-        if(convertView == null)
-        {
-            //将布局文件转换为View对象
-             view = View.inflate(getApplicationContext(),R.layout.activtiy_item,null);
-        }
-        else {
-            view = convertView;
-        }
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        TextView tv_phone = (TextView) view.findViewById(R.id.tv_phone);
-
-        //设置控件的值
-        tv_name.setText(arrayListContact.get(position).getName());
-        tv_phone.setText(arrayListContact.get(position).getPhone());
-
-        return view;
-    }
-
-}
+<li><p>注册一个电话状态的监听</p>
+<pre><code>//2. 注册一个电话状态的监听
+tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
 </code></pre></li>
-<li><p>接下来实现的是当点击listview的条目时，将条目上的信息返回，并关闭此activity</p>
-<pre><code>    //ContactActivity.java
-    private ListView lv_contact;
-       private List&lt;Contact&gt; arrayListContact;
-    ......
-    lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+<li><p>在监听器中实现onCallStateChanged方法</p>
+<pre><code>//当电话的状态发生变化时调用
+ @Override
+ public void onCallStateChanged(int state, String incomingNumber) {
+     super.onCallStateChanged(state, incomingNumber);
 
-        //contact对象是保存在List集合中，所以可以通过集合获取contact对象
-        //取出点中条目的数据
-        String phone = arrayListContact.get(position).getPhone();
+ //判断具体是哪一个 电话状态
+ switch (state){
 
-        //把取出的数据返回
-        Intent intent = new Intent();
-        intent.putExtra(&quot;name&quot;,phone);
+     case TelephonyManager.CALL_STATE_RINGING:  //响铃状态
+         System.out.println(&quot;现在是响铃状态，需要开始准备录音机&quot;);
 
-        setResult(10,intent);  //把数据返回给调用者
+         break;
 
-        //☆☆☆☆☆关闭当前activity，此时Mainactivity的onActivityResult方法就会执行
-        finish();
+     case TelephonyManager.CALL_STATE_OFFHOOK:  //接通状态
+         System.out.print(&quot;开始录音&quot;);
 
-    }
-});
-</code></pre></li>
-<li><p>在MainActivity中处理由activity返回数据的代码如下：</p>
-<pre><code>//当开启的activity关闭的时候调用此方法
-//此方法用来处理所启动的activity所返回的数据
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+         //1. 获取MediaRecorder实例
+         recorder = new MediaRecorder();
 
-    switch (resultCode){
-        //10：表明是contactActivity返回的数据
-        case 10:
-            String phone = data.getStringExtra(&quot;name&quot;);
-            et_phone.setText(phone);
-            break;
-        //20：表明是SmsTemplateActivity返回的数据
-        case 20:
-            String content = data.getStringExtra(&quot;content&quot;);
-            et_content.setText(content);
+         //2. 设置音频的来源
+         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 
-        }
-    }
+         //3. 设置音频的输出格式
+         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+
+         //4. 设置音频的编码方式
+         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+         //设置音频文件的保存路径
+         recorder.setOutputFile(&quot;/mnt/sdcard/luyin.avi&quot;);
+
+         try {
+             recorder.prepare();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+         //开始录音
+         recorder.start();
+
+         System.out.println(&quot;正在录音&quot;);
 </code></pre></li>
 </ol>
-<ol>
-<li>同样在消息模板的代码中，也是遵循同样的步骤,代码如下：</li>
-</ol>
-<pre><code>//SmsTemplateActivity.java
-public class SmsTemplateActivity extends Activity {
+<pre><code>        break;
 
-private String objects[] = {&quot;我正在开会，稍后联系&quot;, &quot;我正在上课，稍后联系&quot;, &quot;我正在开车，稍后联系&quot;, &quot;我正在吃饭，稍后联系&quot;, &quot;我正在休假，稍后联系&quot;};
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_template);
-
-    ListView lv_template = (ListView) findViewById(R.id.lv_template);
-
-    //为listview设置适配器
-    lv_template.setAdapter(new ArrayAdapter&lt;String&gt;(getApplicationContext(), R.layout.activty_template_item, objects));
-
-    lv_template.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //当listview的条目被点击时，将条目上的信息返回到调用此activity的调用者
-
-        @Override
-        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
-            String content = objects[position];
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(&quot;content&quot;,content);
-
-            //☆☆☆☆☆此方法中有两个参数 ResultCode 和 Intent,resultcode可用于区分是由哪一个activity返回的数据，由于在MainActivity中需要得到此类的返回数据，所以必须设置此方法
-            setResult(20,intent);
-
-            //处理点击事件后，将此activity关闭
-            finish();
+    case TelephonyManager.CALL_STATE_IDLE:   //空闲状态
+        if(recorder != null){
+            recorder.stop();    //停止录音
+           // recorder.reset();   // You can reuse the object by going back to setAudioSource() step
+            recorder.release();  // Now the object cannot be reused
+            recorder = null;
         }
-    });
+
+        break;
 
     }
 }
 </code></pre><ol>
-<li><p>1）最后是消息的发送处理方法，首先需要在<code>manifest</code>中添加发送信息的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
-</code></pre><p> 2）接着需要调用发送消息的API,代码如下：</p>
-<pre><code>//发送消息的点击事件
-bt_send.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String number = et_phone.getText().toString().trim();
-        String context = et_content.getText().toString().trim();
-
-        //调用发送消息的API
-        SmsManager smsManager = SmsManager.getDefault();
-
-        //消息的分条发送，目的就是防止因为信息过长而无法一次发送，此处就是将较长的信息分成多条发送
-        ArrayList&lt;String&gt; strings = smsManager.divideMessage(context);
-        for (String str : strings)
-        {
-            smsManager.sendTextMessage(number,null,str,null,null);
-        }
-    }
-
-});
+<li><p>同时需要加上相应的权限：</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
 </code></pre></li>
 </ol>
+<p>##5. 在服务中注册特殊的广播接收者<br>    通过startService开启服务，该服务会在后台长期执行，直到被手动销毁！！！！而如果在广播接收者的onReceive方法中注册，一旦退出程序，注册的广播就会失效！！！</p>
+<pre><code>所以在service的onCreate方法中注册广播接收者，代替在MainFest文件中注册。
+</code></pre><p>步骤如下：( day 08 )</p>
+<pre><code>1. 创建广播接收者
+2. 创建一个服务，用来注册广播接收者的一些参数
+3. 配置service
+</code></pre><p>##6. bindService开启服务  与  StartService开启服务</p>
+<pre><code>bindService： 连接到服务 刚开始建立服务时会调 onCreate 和 onBind 方法  其对应unbindService 方法,否则会报 leak错误，
+</code></pre><p><strong>特点:   一旦程序退出service就会被销毁，通过bind 方法开启服务，不能在设置中查到， 相当于一个隐形的服务   bindService 不能多次解绑，多次解绑会报错</strong></p>
+<pre><code>startService: 
+</code></pre><p>###引入bindService方法的原因：</p>
+<pre><code>为了能够调用服务里的方法，为了能够更好的说明，下面介绍一个例子：  实现通过服务中的onBind 方法调用服务里的方法
+
+步骤：
+1. 创建一个Service ,在service里添加一个方法，用来被调用 ;
+2. 创建一个中间人对象Mybinder，继承IBinder的子类 Binder，并实现调用所需的方法 ;
+3. 在onBinder 方法中返回 MyBinder对象 ；
+4. 在Activity 的 OnCreate 的方法中调用bindService方法，其中在参数的接口中将MyBinder对象取到 ；
+5. 在点击事件中 通过此对象调用service里的方法
+</code></pre><p>##7. 百度音乐盒框架</p>
+<ol>
+<li>需求： 既想让服务在后台长期运行，又想调用服务里的方法，利用混合方式开启服务，但顺序一定是 </li>
+</ol>
+<pre><code>1. 先开启startService 保证服务在后台长期运行；
+2. 再开启 bindService 获取 服务里的方法；
+3. 接着 调用 unbindService ；
+4. 最后调用stopService 停止服务。
+
+**注意此时，调用unbind方法不会销毁服务 从而能够保证服务能够在后台长期运行。**
+</code></pre><p>##8. aidl的介绍b  android interface defination language  接口定义语言</p>
+<pre><code>1. 远程服务： 运行在其他应用程序的服务；
+2. 本地服务： 运行在自己应用程序的服务；
+3. 进行进程之间的通信  IPC 
+</code></pre><p>###与之前那的区别是：</p>
+<pre><code>1. 需要添加将接口文件更改为.aidl的格式；
+2. 在aidl文件中是不识别public 标识的，所以应该去掉；
+3. 将中间人对象继承IBinder更改为继承 Stub对象；
+4. 在启动远程服务时，需要调用隐式意图； 
+5. 在获取中间人对象时，需要进行类型的转换，需要调用 Stub.as...方法；
+6. 为了能够在两个应用中保持相同的aidl文件，需要相同的包名；
+</code></pre><p>##7. 内容提供者（ContentProvider）</p>
 
       
     </div>
@@ -556,7 +517,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/6. 自定义View/" rel="next" title="">
+              <a href="/2017/03/11/22. scala/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -566,7 +527,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/9. activity的生命周期/" rel="prev" title="">
+              <a href="/2017/03/11/1. SharedPreference/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -594,8 +555,8 @@ bt_send.setOnClickListener(new View.OnClickListener() {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/8.sendMessage实现过程/"
-           data-title="" data-url="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+      <div class="ds-thread" data-thread-key="2017/03/11/11. Service/"
+           data-title="" data-url="https://horizonyu.github.io/2017/03/11/11. Service/">
       </div>
     
   </div>

@@ -87,28 +87,30 @@
 
 
 
-<meta name="description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="description" content="#ContentProvider
+##引入的原因：1. 创建数据库 创建一个类继承 SQLiteOpenHelper；
+2. chcp 936把当前dos窗体更改编码为 BGK 65001 编码方式为utf-8;
+3. 必须拿到SqliteDatabase 才能拿到数据库；
+4. chmod 777 Account.db,可以改变数据库的权限 ，此方法并不推荐，所以就需要 另外一种方法来打开数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello , This is Hexo !">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/index.html">
+<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/13. ContentProvider/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
-<meta property="og:updated_time" content="2016-07-31T04:29:43.439Z">
+<meta property="og:description" content="#ContentProvider
+##引入的原因：1. 创建数据库 创建一个类继承 SQLiteOpenHelper；
+2. chcp 936把当前dos窗体更改编码为 BGK 65001 编码方式为utf-8;
+3. 必须拿到SqliteDatabase 才能拿到数据库；
+4. chmod 777 Account.db,可以改变数据库的权限 ，此方法并不推荐，所以就需要 另外一种方法来打开数据库">
+<meta property="og:image" content="http://i.imgur.com/4E7wqZz.png">
+<meta property="og:updated_time" content="2016-08-12T14:12:26.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello , This is Hexo !">
-<meta name="twitter:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="twitter:description" content="#ContentProvider
+##引入的原因：1. 创建数据库 创建一个类继承 SQLiteOpenHelper；
+2. chcp 936把当前dos窗体更改编码为 BGK 65001 编码方式为utf-8;
+3. 必须拿到SqliteDatabase 才能拿到数据库；
+4. chmod 777 Account.db,可以改变数据库的权限 ，此方法并不推荐，所以就需要 另外一种方法来打开数据库">
+<meta name="twitter:image" content="http://i.imgur.com/4E7wqZz.png">
 
 
 
@@ -136,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/13. ContentProvider/"/>
 
 
 
@@ -271,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/13. ContentProvider/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -326,8 +328,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/8.sendMessage实现过程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/8.sendMessage实现过程/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/13. ContentProvider/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/13. ContentProvider/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,179 +355,102 @@
       
 
       
-        <p>#activity之间的跳转、数据传递、listview的数据显示</p>
-<p>此应用实现的功能如下：<br>    1 点击添加按钮，可实现添加联系人的功能；<br>    2 点击消息模板按钮，可实现添加消息模板的功能；</p>
-<p>##添加联系人的功能</p>
-<ol>
-<li><p>☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 Intent 和 RequestCode 此部分的代码如下:</p>
-<pre><code>//MainActivity.java
-//添加联系人的点击事件
-    bt_add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
+        <p>#ContentProvider</p>
+<p>##引入的原因：<br><strong>1. 创建数据库 创建一个类继承 SQLiteOpenHelper；</strong></p>
+<p><strong>2. chcp 936把当前dos窗体更改编码为 BGK 65001 编码方式为utf-8;</strong></p>
+<p><strong>3. 必须拿到SqliteDatabase 才能拿到数据库；</strong></p>
+<p><strong>4. chmod 777 Account.db,可以改变数据库的权限 ，此方法并不推荐，所以就需要 另外一种方法来打开数据库——ContentProvider；</strong> </p>
+<pre><code>adb shell
+cd /data/data/com.example.horizon.a14_the_import_of_contentprovider
+cd databases
+chmod 777 Account.db
 
-            //requestCode 请求码
-            startActivityForResult(intent, 1);
-        }
-    });
-</code></pre></li>
-</ol>
-<ol>
-<li><p>相应的在ContactActivity中，由于联系人信息是由listview显示出来，所以需要涉及到listview适配器的设置，代码如下,其中在contactAdapter中主要用到的是getCount()和getView（）方法：</p>
-<pre><code>//ContactActivity.java
-//listview适配器的设置
-lv_contact.setAdapter(new contactAdapter());
-......
- private class contactAdapter extends BaseAdapter{
-    @Override
-    public int getCount() {
-        return arrayListContact.size();
+
+在命令行中更改编码方式：
+    chcp 65001 -&gt;GBK
+    chcp 936   -&gt;utf-8
+</code></pre><p>##ContentProvider使用原理</p>
+<p><img src="http://i.imgur.com/4E7wqZz.png" alt=""></p>
+<p>##实现步骤：</p>
+<pre><code>1. 定义内容提供者 定义一个类继承 ContentProvider，实现其内部方法；
+2. 在清单文件中配置  
+
+    &lt;provider ......
+3. 定义一个 UriMathcher ;
+4. 写一个代码块，添加匹配规则；
+5. 按照添加的匹配规则， 暴露所需的方法；
+6. 若发现如下日志，说明没有错误。
+</code></pre><p>##消息备份：获取手机中消息，并备份到xml文件中</p>
+<p>###由于短息的数据库已经通过内容提供者暴露出来，所以我们直接通过内容的解析者其获取其数据</p>
+<pre><code>    //获取XmlSerializer
+try {
+
+    System.out.println(&quot;这是信息备份按钮&quot;);
+
+    XmlSerializer serializer = Xml.newSerializer();
+
+    //设置xml文件的属性
+    //设置文件输出流
+    File file = new File(Environment.getExternalStorageDirectory().getPath(), &quot;smsbackup.xml&quot;);
+    FileOutputStream fos = new FileOutputStream(file);
+    serializer.setOutput(fos, &quot;utf-8&quot;);
+
+    System.out.println(&quot;这是try-catch&quot;);
+    //设置Xml文档的开头
+    serializer.startDocument(&quot;utf-8&quot;, true);
+    //xml文件的根节点
+    serializer.startTag(null, &quot;smss&quot;);
+
+    //由于短信的数据库已经通过内容提供者暴露出来 所以我们直接通过内容解析者查询
+    Uri uri = Uri.parse(&quot;content://sms/&quot;);
+    Cursor cursor = getContentResolver().query(uri, new String[]{&quot;address&quot;, &quot;date&quot;, &quot;body&quot;}, null, null, null);
+    while (cursor.moveToNext()) {
+        String address = cursor.getString(0);
+        String date = cursor.getString(1);
+        String body = cursor.getString(2);
+
+        //设置sms节点
+        serializer.startTag(null, &quot;sms&quot;);
+        //设置其中的一个sms内容
+        serializer.startTag(null, &quot;address&quot;);
+        serializer.text(address);
+        serializer.endTag(null, &quot;address&quot;);
+
+        serializer.startTag(null, &quot;date&quot;);
+        serializer.text(date);
+        serializer.endTag(null, &quot;date&quot;);
+
+        serializer.startTag(null, &quot;body&quot;);
+        serializer.text(body);
+        serializer.endTag(null, &quot;body&quot;);
+
+        //一条sms结束的标志
+        serializer.endTag(null, &quot;sms&quot;);
+
+        System.out.println(&quot;消息的内容是：&quot; + address + &quot;-------&quot; + date + &quot;---------&quot; + body);
+
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    serializer.endTag(null, &quot;smss&quot;);
+    serializer.endDocument();
+    fos.close();
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
-        if(convertView == null)
-        {
-            //将布局文件转换为View对象
-             view = View.inflate(getApplicationContext(),R.layout.activtiy_item,null);
-        }
-        else {
-            view = convertView;
-        }
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        TextView tv_phone = (TextView) view.findViewById(R.id.tv_phone);
-
-        //设置控件的值
-        tv_name.setText(arrayListContact.get(position).getName());
-        tv_phone.setText(arrayListContact.get(position).getPhone());
-
-        return view;
-    }
-
+} catch (Exception e) {
+    e.printStackTrace();
 }
-</code></pre></li>
-<li><p>接下来实现的是当点击listview的条目时，将条目上的信息返回，并关闭此activity</p>
-<pre><code>    //ContactActivity.java
-    private ListView lv_contact;
-       private List&lt;Contact&gt; arrayListContact;
-    ......
-    lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+</code></pre><p>##向消息数据库中添加一条信息</p>
+<p>###由于信息的数据库已经被暴露出来，所以只需要在客户端通过ContentResolver 来获取</p>
+<pre><code> Uri uri = Uri.parse(&quot;content://sms/&quot;);
+ ContentValues values = new ContentValues();
+ values.put(&quot;address&quot;,&quot;11111&quot;);
+ values.put(&quot;body&quot;,&quot;你好&quot;);
 
-        //contact对象是保存在List集合中，所以可以通过集合获取contact对象
-        //取出点中条目的数据
-        String phone = arrayListContact.get(position).getPhone();
-
-        //把取出的数据返回
-        Intent intent = new Intent();
-        intent.putExtra(&quot;name&quot;,phone);
-
-        setResult(10,intent);  //把数据返回给调用者
-
-        //☆☆☆☆☆关闭当前activity，此时Mainactivity的onActivityResult方法就会执行
-        finish();
-
-    }
-});
-</code></pre></li>
-<li><p>在MainActivity中处理由activity返回数据的代码如下：</p>
-<pre><code>//当开启的activity关闭的时候调用此方法
-//此方法用来处理所启动的activity所返回的数据
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    switch (resultCode){
-        //10：表明是contactActivity返回的数据
-        case 10:
-            String phone = data.getStringExtra(&quot;name&quot;);
-            et_phone.setText(phone);
-            break;
-        //20：表明是SmsTemplateActivity返回的数据
-        case 20:
-            String content = data.getStringExtra(&quot;content&quot;);
-            et_content.setText(content);
-
-        }
-    }
-</code></pre></li>
-</ol>
-<ol>
-<li>同样在消息模板的代码中，也是遵循同样的步骤,代码如下：</li>
-</ol>
-<pre><code>//SmsTemplateActivity.java
-public class SmsTemplateActivity extends Activity {
-
-private String objects[] = {&quot;我正在开会，稍后联系&quot;, &quot;我正在上课，稍后联系&quot;, &quot;我正在开车，稍后联系&quot;, &quot;我正在吃饭，稍后联系&quot;, &quot;我正在休假，稍后联系&quot;};
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_template);
-
-    ListView lv_template = (ListView) findViewById(R.id.lv_template);
-
-    //为listview设置适配器
-    lv_template.setAdapter(new ArrayAdapter&lt;String&gt;(getApplicationContext(), R.layout.activty_template_item, objects));
-
-    lv_template.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //当listview的条目被点击时，将条目上的信息返回到调用此activity的调用者
-
-        @Override
-        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
-            String content = objects[position];
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(&quot;content&quot;,content);
-
-            //☆☆☆☆☆此方法中有两个参数 ResultCode 和 Intent,resultcode可用于区分是由哪一个activity返回的数据，由于在MainActivity中需要得到此类的返回数据，所以必须设置此方法
-            setResult(20,intent);
-
-            //处理点击事件后，将此activity关闭
-            finish();
-        }
-    });
-
-    }
-}
-</code></pre><ol>
-<li><p>1）最后是消息的发送处理方法，首先需要在<code>manifest</code>中添加发送信息的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
-</code></pre><p> 2）接着需要调用发送消息的API,代码如下：</p>
-<pre><code>//发送消息的点击事件
-bt_send.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String number = et_phone.getText().toString().trim();
-        String context = et_content.getText().toString().trim();
-
-        //调用发送消息的API
-        SmsManager smsManager = SmsManager.getDefault();
-
-        //消息的分条发送，目的就是防止因为信息过长而无法一次发送，此处就是将较长的信息分成多条发送
-        ArrayList&lt;String&gt; strings = smsManager.divideMessage(context);
-        for (String str : strings)
-        {
-            smsManager.sendTextMessage(number,null,str,null,null);
-        }
-    }
-
-});
-</code></pre></li>
-</ol>
+getContentResolver().insert(uri, values);
+</code></pre><p>##读取联系人信息</p>
+<p>##内容观察者</p>
+<p>###当应用1的数据库被应用2修改时，应用3要立即知道，同过注册一个内容观察者就可以达到这个效果</p>
+<pre><code>1. 内容观察者不是四大组件，不需要再清单文件中注册，getContentResolver().registerContentObserver()
+</code></pre><p>###应用场景： 短信监听器</p>
 
       
     </div>
@@ -556,7 +481,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/6. 自定义View/" rel="next" title="">
+              <a href="/2017/03/11/10. android中一些零散的知识点/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -566,7 +491,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/9. activity的生命周期/" rel="prev" title="">
+              <a href="/2017/03/11/12. database/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -594,8 +519,8 @@ bt_send.setOnClickListener(new View.OnClickListener() {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/8.sendMessage实现过程/"
-           data-title="" data-url="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+      <div class="ds-thread" data-thread-key="2017/03/11/13. ContentProvider/"
+           data-title="" data-url="https://horizonyu.github.io/2017/03/11/13. ContentProvider/">
       </div>
     
   </div>

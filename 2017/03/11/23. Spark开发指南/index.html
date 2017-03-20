@@ -87,28 +87,24 @@
 
 
 
-<meta name="description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
+<meta name="description" content="###简介
 
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello , This is Hexo !">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/index.html">
+<meta property="og:title" content="Spark 开发指南   //在此处添加你的标题。">
+<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/23. Spark开发指南/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
+<meta property="og:description" content="###简介
 
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
-<meta property="og:updated_time" content="2016-07-31T04:29:43.439Z">
+Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从">
+<meta property="og:image" content="http://i.imgur.com/aNFW4Bw.png">
+<meta property="og:updated_time" content="2017-03-20T06:47:34.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello , This is Hexo !">
-<meta name="twitter:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
+<meta name="twitter:title" content="Spark 开发指南   //在此处添加你的标题。">
+<meta name="twitter:description" content="###简介
 
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从">
+<meta name="twitter:image" content="http://i.imgur.com/aNFW4Bw.png">
 
 
 
@@ -136,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/23. Spark开发指南/"/>
 
 
 
 
 
-  <title>  | Hello , This is Hexo ! </title>
+  <title> Spark 开发指南   //在此处添加你的标题。 | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/23. Spark开发指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -292,7 +288,7 @@
             
             
               
-                
+                Spark 开发指南   //在此处添加你的标题。
               
             
           </h1>
@@ -318,6 +314,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">//在此处输入这篇文章的分类。</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -326,8 +344,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/8.sendMessage实现过程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/8.sendMessage实现过程/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/23. Spark开发指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/23. Spark开发指南/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,179 +371,23 @@
       
 
       
-        <p>#activity之间的跳转、数据传递、listview的数据显示</p>
-<p>此应用实现的功能如下：<br>    1 点击添加按钮，可实现添加联系人的功能；<br>    2 点击消息模板按钮，可实现添加消息模板的功能；</p>
-<p>##添加联系人的功能</p>
+        <p>###简介</p>
 <ol>
-<li><p>☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 Intent 和 RequestCode 此部分的代码如下:</p>
-<pre><code>//MainActivity.java
-//添加联系人的点击事件
-    bt_add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
-
-            //requestCode 请求码
-            startActivityForResult(intent, 1);
-        }
-    });
-</code></pre></li>
+<li><p>Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从节点故障中恢复。</p>
+</li>
+<li><p>Spark提供的第二个抽象概念是共享变量，它可以在并行操作中使用。默认情况下，Spark通过不同节点的一些列任务来运行一个函数。它将每一个函数中用到的变量的拷贝传递到每一个任务中。有时候，一个变量需要在不同的任务之间、或者任务和驱动程序之间共享。Spark支持两种类型的变量共享：广播变量，可以在所有节点中缓存一个值；累加器，一个只能做加法的变量，例如计数器和求和。</p>
+</li>
 </ol>
+<p>###弹性分布式数据集RDDS<br>Spark 反复围绕的一个概念是弹性分布式数据集，它是一个有容错机制的元素集合，并且可以被并行操作。有两种创建RDDS的方法，<strong>并行化你的驱动程序的已有的集合</strong>，或者<strong>引用一个外部存储系统的数据集</strong>，例如一个文件系统，HDFS、HBase,或者任何可以提供一个Hadoop　InputFormat的数据源。</p>
+<p>##Spark 运行架构</p>
+<p>###1. 术语定义</p>
 <ol>
-<li><p>相应的在ContactActivity中，由于联系人信息是由listview显示出来，所以需要涉及到listview适配器的设置，代码如下,其中在contactAdapter中主要用到的是getCount()和getView（）方法：</p>
-<pre><code>//ContactActivity.java
-//listview适配器的设置
-lv_contact.setAdapter(new contactAdapter());
-......
- private class contactAdapter extends BaseAdapter{
-    @Override
-    public int getCount() {
-        return arrayListContact.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
-        if(convertView == null)
-        {
-            //将布局文件转换为View对象
-             view = View.inflate(getApplicationContext(),R.layout.activtiy_item,null);
-        }
-        else {
-            view = convertView;
-        }
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        TextView tv_phone = (TextView) view.findViewById(R.id.tv_phone);
-
-        //设置控件的值
-        tv_name.setText(arrayListContact.get(position).getName());
-        tv_phone.setText(arrayListContact.get(position).getPhone());
-
-        return view;
-    }
-
-}
-</code></pre></li>
-<li><p>接下来实现的是当点击listview的条目时，将条目上的信息返回，并关闭此activity</p>
-<pre><code>    //ContactActivity.java
-    private ListView lv_contact;
-       private List&lt;Contact&gt; arrayListContact;
-    ......
-    lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
-
-        //contact对象是保存在List集合中，所以可以通过集合获取contact对象
-        //取出点中条目的数据
-        String phone = arrayListContact.get(position).getPhone();
-
-        //把取出的数据返回
-        Intent intent = new Intent();
-        intent.putExtra(&quot;name&quot;,phone);
-
-        setResult(10,intent);  //把数据返回给调用者
-
-        //☆☆☆☆☆关闭当前activity，此时Mainactivity的onActivityResult方法就会执行
-        finish();
-
-    }
-});
-</code></pre></li>
-<li><p>在MainActivity中处理由activity返回数据的代码如下：</p>
-<pre><code>//当开启的activity关闭的时候调用此方法
-//此方法用来处理所启动的activity所返回的数据
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    switch (resultCode){
-        //10：表明是contactActivity返回的数据
-        case 10:
-            String phone = data.getStringExtra(&quot;name&quot;);
-            et_phone.setText(phone);
-            break;
-        //20：表明是SmsTemplateActivity返回的数据
-        case 20:
-            String content = data.getStringExtra(&quot;content&quot;);
-            et_content.setText(content);
-
-        }
-    }
-</code></pre></li>
+<li>Application : Spark Application 和 Hadoop MapReduce中的类似，指的是用户编写的Spark用户程序，包含了一个 Driver 功能的代码和分布在集群中多个节点上运行的Executor代码；</li>
+<li>Driver : Spark中的Driver即运行上述Application的main()函数并且创建SparkContext，其中创建SparkContext的目的是为了准备Spark应用程序的运行环境。在Spark中由SparkContext负责和ClusterManager通信，进行资源的申请、任务的分配和监控等；当Executor部分运行完毕后，Driver负责将SparkContext关闭。<strong><em>通常用SparkContext代表Driver;</em></strong></li>
+<li>Executor : Application 运行在worker节点上的一个进程，该进程负责运行Task ，并且负责将数据存储在内存或者磁盘上，每个Application 都有各自独立的一批Execuotr。</li>
 </ol>
-<ol>
-<li>同样在消息模板的代码中，也是遵循同样的步骤,代码如下：</li>
-</ol>
-<pre><code>//SmsTemplateActivity.java
-public class SmsTemplateActivity extends Activity {
-
-private String objects[] = {&quot;我正在开会，稍后联系&quot;, &quot;我正在上课，稍后联系&quot;, &quot;我正在开车，稍后联系&quot;, &quot;我正在吃饭，稍后联系&quot;, &quot;我正在休假，稍后联系&quot;};
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_template);
-
-    ListView lv_template = (ListView) findViewById(R.id.lv_template);
-
-    //为listview设置适配器
-    lv_template.setAdapter(new ArrayAdapter&lt;String&gt;(getApplicationContext(), R.layout.activty_template_item, objects));
-
-    lv_template.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //当listview的条目被点击时，将条目上的信息返回到调用此activity的调用者
-
-        @Override
-        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
-            String content = objects[position];
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(&quot;content&quot;,content);
-
-            //☆☆☆☆☆此方法中有两个参数 ResultCode 和 Intent,resultcode可用于区分是由哪一个activity返回的数据，由于在MainActivity中需要得到此类的返回数据，所以必须设置此方法
-            setResult(20,intent);
-
-            //处理点击事件后，将此activity关闭
-            finish();
-        }
-    });
-
-    }
-}
-</code></pre><ol>
-<li><p>1）最后是消息的发送处理方法，首先需要在<code>manifest</code>中添加发送信息的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
-</code></pre><p> 2）接着需要调用发送消息的API,代码如下：</p>
-<pre><code>//发送消息的点击事件
-bt_send.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String number = et_phone.getText().toString().trim();
-        String context = et_content.getText().toString().trim();
-
-        //调用发送消息的API
-        SmsManager smsManager = SmsManager.getDefault();
-
-        //消息的分条发送，目的就是防止因为信息过长而无法一次发送，此处就是将较长的信息分成多条发送
-        ArrayList&lt;String&gt; strings = smsManager.divideMessage(context);
-        for (String str : strings)
-        {
-            smsManager.sendTextMessage(number,null,str,null,null);
-        }
-    }
-
-});
-</code></pre></li>
-</ol>
+<p>###2. Spark 运行基本流程</p>
+<p><img src="http://i.imgur.com/aNFW4Bw.png" alt=""></p>
 
       
     </div>
@@ -556,7 +418,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/6. 自定义View/" rel="next" title="">
+              <a href="/2017/03/11/16. snap(stanford network analysis platform)/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -566,7 +428,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/9. activity的生命周期/" rel="prev" title="">
+              <a href="/2017/03/11/4. tomcat/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -594,8 +456,8 @@ bt_send.setOnClickListener(new View.OnClickListener() {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/8.sendMessage实现过程/"
-           data-title="" data-url="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+      <div class="ds-thread" data-thread-key="2017/03/11/23. Spark开发指南/"
+           data-title="Spark 开发指南   //在此处添加你的标题。" data-url="https://horizonyu.github.io/2017/03/11/23. Spark开发指南/">
       </div>
     
   </div>

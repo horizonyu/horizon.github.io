@@ -87,28 +87,28 @@
 
 
 
-<meta name="description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello , This is Hexo !">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/index.html">
+<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/14. 多媒体/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
-<meta property="og:updated_time" content="2016-07-31T04:29:43.439Z">
+<meta property="og:description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
+<meta property="og:updated_time" content="2016-08-15T14:11:53.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello , This is Hexo !">
-<meta name="twitter:description" content="#activity之间的跳转、数据传递、listview的数据显示
-此应用实现的功能如下：    1 点击添加按钮，可实现添加联系人的功能；    2 点击消息模板按钮，可实现添加消息模板的功能；
-##添加联系人的功能
-
-☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 In">
+<meta name="twitter:description" content="#多媒体
+##1. 计算机表示图形的几种方式：
+###图形的大小 = 图片的总像素  每个像素的大小    如：800400像素的图片  320000/8 = 40000 byte 
+####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；
+####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/14. 多媒体/"/>
 
 
 
@@ -271,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/14. 多媒体/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -326,8 +326,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/8.sendMessage实现过程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/8.sendMessage实现过程/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/14. 多媒体/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/14. 多媒体/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,179 +353,97 @@
       
 
       
-        <p>#activity之间的跳转、数据传递、listview的数据显示</p>
-<p>此应用实现的功能如下：<br>    1 点击添加按钮，可实现添加联系人的功能；<br>    2 点击消息模板按钮，可实现添加消息模板的功能；</p>
-<p>##添加联系人的功能</p>
-<ol>
-<li><p>☆☆☆☆☆为了能够实现在被调用的activity关闭后能将数据返回，需要在启动activity时调用startActivityForResult（）方法，此方法包含两个参数 Intent 和 RequestCode 此部分的代码如下:</p>
-<pre><code>//MainActivity.java
-//添加联系人的点击事件
-    bt_add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
+        <p>#多媒体</p>
+<p>##1. 计算机表示图形的几种方式：</p>
+<p>###图形的大小 = 图片的总像素 <em> 每个像素的大小<br>    如：800</em>400像素的图片  320000/8 = 40000 byte </p>
+<p>####-单色： （每个像素最多可以表示两种颜色），只需要使用长度为1的二进制位来表示，每个像素占1/8byte；</p>
+<p>####-16色 ：（每个像素最多可以表示16种颜色） 0000 - 1111 只需要使用长度为4的位二进制表示  那么每个像素占1/2 byte ;</p>
+<p>####-256色： （每个像素最多可以表示256种颜色） 0000 0000 - 1111 1111  只需要使用长度为8的位二进制表示 ,每个像素占1 byte ;</p>
+<p>####-24位：rgb r 1byte, g 1byte, b 1byte  一个 像素占3个byte</p>
+<p>####-在andoroid 下 采用ARGB A 表示透明度， 一个像素表示4byte </p>
+<p>####-图片：2400<em>3200 ， 手机 320</em>480 ，宽缩放 ：7，高缩放：6，所以按照宽缩放进行，</p>
+<pre><code>所以需要想办法获取需要 缩放的图片的像素 以及 手机的像素
+</code></pre><p>####获取手机的分辨率  windowManager</p>
+<pre><code>WindowManager wm = getSystemService(WINDOW_SERVICE);
+wm.getDefaultDisplay().getWidth(); //手机的宽
+wm.getDefaultDisplay().getHeight(); //手机的高
+</code></pre><p>####获取图片的分辨率 ,并显示出来</p>
+<pre><code>       BitmapFactory.Options option = new BitmapFactory.Options();
 
-            //requestCode 请求码
-            startActivityForResult(intent, 1);
-        }
-    });
-</code></pre></li>
-</ol>
-<ol>
-<li><p>相应的在ContactActivity中，由于联系人信息是由listview显示出来，所以需要涉及到listview适配器的设置，代码如下,其中在contactAdapter中主要用到的是getCount()和getView（）方法：</p>
-<pre><code>//ContactActivity.java
-//listview适配器的设置
-lv_contact.setAdapter(new contactAdapter());
-......
- private class contactAdapter extends BaseAdapter{
-    @Override
-    public int getCount() {
-        return arrayListContact.size();
-    }
+//   If set to true, the decoder will return null (no bitmap), but
+//   * the out... fields will still be set, allowing the caller to query
+//    * the bitmap without having to allocate the memory for its pixels.
+            //如果设置为true则会返回空
+            option.inMutable = true;
+            //从方法放回的bitmap为空，但是却可以设置他的一些参数
+            Bitmap bitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+            //获取图片的分辨率
+            int imgWidth = option.outWidth;
+            int imgHeight = option.outHeight;
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+            //设置图图片的缩放
+            int scale = 1;
+            int scalex= imgWidth/width;
+            int scaley = imgHeight/height;
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
-        if(convertView == null)
-        {
-            //将布局文件转换为View对象
-             view = View.inflate(getApplicationContext(),R.layout.activtiy_item,null);
-        }
-        else {
-            view = convertView;
-        }
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        TextView tv_phone = (TextView) view.findViewById(R.id.tv_phone);
+            if(scalex &gt;= scaley &amp;&amp; scalex &gt; scale)
+            {
+                scale = scalex;
+            }
+            else if(scaley &gt; scalex &amp;&amp; scaley &gt; scale){
+                scale = scaley;
+            }
 
-        //设置控件的值
-        tv_name.setText(arrayListContact.get(position).getName());
-        tv_phone.setText(arrayListContact.get(position).getPhone());
+            //确定图片的缩放
+            option.inSampleSize = scale;
+            option.inMutable = false;
 
-        return view;
-    }
+            //将jpg类型的图片解析为bitmap类型
+            Bitmap imgBitmap = BitmapFactory.decodeFile(&quot;/data/dog.jpg&quot;, option);
+            iv.setImageBitmap(imgBitmap);
+</code></pre><p>###创建原图的副本</p>
+<pre><code>//下面实现拷贝原图
+              //创建模板
+              copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+              //创建一个画布对象
+              canvas = new Canvas(copyBitmap);
+              //创建一个画笔对象
+              paint = new Paint();
 
-}
-</code></pre></li>
-<li><p>接下来实现的是当点击listview的条目时，将条目上的信息返回，并关闭此activity</p>
-<pre><code>    //ContactActivity.java
-    private ListView lv_contact;
-       private List&lt;Contact&gt; arrayListContact;
-    ......
-    lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
 
-        //contact对象是保存在List集合中，所以可以通过集合获取contact对象
-        //取出点中条目的数据
-        String phone = arrayListContact.get(position).getPhone();
+              matrix = new Matrix();
+                canvas.drawBitmap(srcBitmap, matrix, paint);
 
-        //把取出的数据返回
-        Intent intent = new Intent();
-        intent.putExtra(&quot;name&quot;,phone);
+                 iv_copy.setImageBitmap(copyBitmap);
+</code></pre><p>###将图片进行旋转</p>
+<pre><code>matrix.setRotate(i += 20, copyBitmap.getWidth() / 2, copyBitmap.getHeight() / 2);
+</code></pre><p>###图片的倒影</p>
+<p>##画板案例</p>
+<p>###实现原理就是以一张图片作为复制的模板，创建出一个副本，由于原图片无法修改，所以只能在图片的副本上面进行修改</p>
+<pre><code>//根据图片创建一个Bitmap对象，依据此对象创建图片的副本
+ srcBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pre19);
 
-        setResult(10,intent);  //把数据返回给调用者
+    //创建图片的副本
+    copyBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), srcBitmap.getConfig());
+    //获得画布对象
+    canvas = new Canvas(copyBitmap);
+    //    获得画笔对象
+    paint = new Paint();
 
-        //☆☆☆☆☆关闭当前activity，此时Mainactivity的onActivityResult方法就会执行
-        finish();
+    //依据原图的bitmap对象进行画图
+    canvas.drawBitmap(srcBitmap,new Matrix(),paint);
 
-    }
-});
-</code></pre></li>
-<li><p>在MainActivity中处理由activity返回数据的代码如下：</p>
-<pre><code>//当开启的activity关闭的时候调用此方法
-//此方法用来处理所启动的activity所返回的数据
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    switch (resultCode){
-        //10：表明是contactActivity返回的数据
-        case 10:
-            String phone = data.getStringExtra(&quot;name&quot;);
-            et_phone.setText(phone);
-            break;
-        //20：表明是SmsTemplateActivity返回的数据
-        case 20:
-            String content = data.getStringExtra(&quot;content&quot;);
-            et_content.setText(content);
-
-        }
-    }
-</code></pre></li>
-</ol>
-<ol>
-<li>同样在消息模板的代码中，也是遵循同样的步骤,代码如下：</li>
-</ol>
-<pre><code>//SmsTemplateActivity.java
-public class SmsTemplateActivity extends Activity {
-
-private String objects[] = {&quot;我正在开会，稍后联系&quot;, &quot;我正在上课，稍后联系&quot;, &quot;我正在开车，稍后联系&quot;, &quot;我正在吃饭，稍后联系&quot;, &quot;我正在休假，稍后联系&quot;};
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_template);
-
-    ListView lv_template = (ListView) findViewById(R.id.lv_template);
-
-    //为listview设置适配器
-    lv_template.setAdapter(new ArrayAdapter&lt;String&gt;(getApplicationContext(), R.layout.activty_template_item, objects));
-
-    lv_template.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //当listview的条目被点击时，将条目上的信息返回到调用此activity的调用者
-
-        @Override
-        public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
-            String content = objects[position];
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(&quot;content&quot;,content);
-
-            //☆☆☆☆☆此方法中有两个参数 ResultCode 和 Intent,resultcode可用于区分是由哪一个activity返回的数据，由于在MainActivity中需要得到此类的返回数据，所以必须设置此方法
-            setResult(20,intent);
-
-            //处理点击事件后，将此activity关闭
-            finish();
-        }
-    });
-
-    }
-}
-</code></pre><ol>
-<li><p>1）最后是消息的发送处理方法，首先需要在<code>manifest</code>中添加发送信息的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot;/&gt;
-</code></pre><p> 2）接着需要调用发送消息的API,代码如下：</p>
-<pre><code>//发送消息的点击事件
-bt_send.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String number = et_phone.getText().toString().trim();
-        String context = et_content.getText().toString().trim();
-
-        //调用发送消息的API
-        SmsManager smsManager = SmsManager.getDefault();
-
-        //消息的分条发送，目的就是防止因为信息过长而无法一次发送，此处就是将较长的信息分成多条发送
-        ArrayList&lt;String&gt; strings = smsManager.divideMessage(context);
-        for (String str : strings)
-        {
-            smsManager.sendTextMessage(number,null,str,null,null);
-        }
-    }
-
-});
-</code></pre></li>
-</ol>
+    iv_before.setImageBitmap(copyBitmap);
+</code></pre><p>###SurfaceView </p>
+<pre><code>1. 内部维护了两个线程：
+    1. A 负责获取数据；
+    2. B 负责显示
+2. 可以直接在子线程更新UI，与进度相关的控件。。。。。。
+</code></pre><p>###videoView    显示有一个video文件</p>
+<pre><code>1. 就是对SurfaceView 和 MediaPlayer进行封装；
+2. mediaplayer 播放视频，只支持3gp,mp4格式，
+</code></pre><p>###vitamio</p>
 
       
     </div>
@@ -556,7 +474,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/6. 自定义View/" rel="next" title="">
+              <a href="/2017/03/11/19. 圆角矩形/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -566,7 +484,7 @@ bt_send.setOnClickListener(new View.OnClickListener() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/9. activity的生命周期/" rel="prev" title="">
+              <a href="/2017/03/11/18. 手机卫士/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -594,8 +512,8 @@ bt_send.setOnClickListener(new View.OnClickListener() {
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/8.sendMessage实现过程/"
-           data-title="" data-url="https://horizonyu.github.io/2017/03/11/8.sendMessage实现过程/">
+      <div class="ds-thread" data-thread-key="2017/03/11/14. 多媒体/"
+           data-title="" data-url="https://horizonyu.github.io/2017/03/11/14. 多媒体/">
       </div>
     
   </div>
