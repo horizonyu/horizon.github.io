@@ -87,39 +87,34 @@
 
 
 
-<meta name="description" content="产品的整个技术实现架构由Android/iOS APP、业务服务器以及腾讯云服务组成。其中，APP负责和用户进行交互，包含的功能模块有：
-
-注册登录（支持微信、QQ等第三方账号登录）
-课堂助手（语音转文字）
-上传到云（腾讯云对象存储COS+内容分发网络CDN）
-趣味课堂（声音音色变换）
-语音点名（腾讯云智能语音服务Artificial Audio Intelligence）
-课堂点名（腾讯云万象优">
+<meta name="description" content="#activity的四个生命周期
+##1. onCreate()    在界面第一次创建时调用
+##2. onstart()    在界面显示时调用
+##3. onResume()    在界面获得焦点时，即界面可以点击时调用
+##4. onPause（）    在界面失去焦点时，即不能点击时调用
+##5. onstop    在界面不可见时被调用
+##6. onDestory()    在界面被">
 <meta property="og:type" content="article">
-<meta property="og:title" content="腾讯云服务">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/21. 腾讯云专项/index.html">
+<meta property="og:title" content="activity的四个生命周期">
+<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/9. activity_life_cycle/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="产品的整个技术实现架构由Android/iOS APP、业务服务器以及腾讯云服务组成。其中，APP负责和用户进行交互，包含的功能模块有：
-
-注册登录（支持微信、QQ等第三方账号登录）
-课堂助手（语音转文字）
-上传到云（腾讯云对象存储COS+内容分发网络CDN）
-趣味课堂（声音音色变换）
-语音点名（腾讯云智能语音服务Artificial Audio Intelligence）
-课堂点名（腾讯云万象优">
-<meta property="og:image" content="http://i.imgur.com/QjHp7ji.png">
-<meta property="og:updated_time" content="2017-03-20T06:52:20.632Z">
+<meta property="og:description" content="#activity的四个生命周期
+##1. onCreate()    在界面第一次创建时调用
+##2. onstart()    在界面显示时调用
+##3. onResume()    在界面获得焦点时，即界面可以点击时调用
+##4. onPause（）    在界面失去焦点时，即不能点击时调用
+##5. onstop    在界面不可见时被调用
+##6. onDestory()    在界面被">
+<meta property="og:updated_time" content="2017-03-20T06:58:09.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="腾讯云服务">
-<meta name="twitter:description" content="产品的整个技术实现架构由Android/iOS APP、业务服务器以及腾讯云服务组成。其中，APP负责和用户进行交互，包含的功能模块有：
-
-注册登录（支持微信、QQ等第三方账号登录）
-课堂助手（语音转文字）
-上传到云（腾讯云对象存储COS+内容分发网络CDN）
-趣味课堂（声音音色变换）
-语音点名（腾讯云智能语音服务Artificial Audio Intelligence）
-课堂点名（腾讯云万象优">
-<meta name="twitter:image" content="http://i.imgur.com/QjHp7ji.png">
+<meta name="twitter:title" content="activity的四个生命周期">
+<meta name="twitter:description" content="#activity的四个生命周期
+##1. onCreate()    在界面第一次创建时调用
+##2. onstart()    在界面显示时调用
+##3. onResume()    在界面获得焦点时，即界面可以点击时调用
+##4. onPause（）    在界面失去焦点时，即不能点击时调用
+##5. onstop    在界面不可见时被调用
+##6. onDestory()    在界面被">
 
 
 
@@ -147,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/21. 腾讯云专项/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/9. activity_life_cycle/"/>
 
 
 
 
 
-  <title> 腾讯云服务 | Hello , This is Hexo ! </title>
+  <title> activity的四个生命周期 | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +277,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/21. 腾讯云专项/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/9. activity_life_cycle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -303,7 +298,7 @@
             
             
               
-                腾讯云服务
+                activity的四个生命周期
               
             
           </h1>
@@ -341,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/腾讯云-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
-                    <span itemprop="name">腾讯云 //在此处输入这篇文章的分类。</span>
+                  <a href="/categories/android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
+                    <span itemprop="name">android//在此处输入这篇文章的分类。</span>
                   </a>
                 </span>
 
@@ -359,8 +354,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/21. 腾讯云专项/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/21. 腾讯云专项/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/9. activity_life_cycle/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/9. activity_life_cycle/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,52 +381,24 @@
       
 
       
-        <p>产品的整个技术实现架构由Android/iOS APP、业务服务器以及腾讯云服务组成。其中，APP负责和用户进行交互，包含的功能模块有：</p>
-<ol>
-<li>注册登录（支持微信、QQ等第三方账号登录）</li>
-<li>课堂助手（语音转文字）</li>
-<li>上传到云（腾讯云对象存储COS+内容分发网络CDN）</li>
-<li>趣味课堂（声音音色变换）</li>
-<li>语音点名（腾讯云智能语音服务Artificial Audio Intelligence）</li>
-<li>课堂点名（腾讯云万象优图的图片处理）</li>
-</ol>
-<p>##开通对象存储服务COS流程：</p>
-<blockquote>
-<p><a href="https://www.qcloud.com/document/product/436/6238" target="_blank" rel="external">https://www.qcloud.com/document/product/436/6238</a></p>
-</blockquote>
-<pre><code>1. [https://www.qcloud.com/product/cos?utm_source=Community&amp;utm_medium=article196&amp;utm_campaign=Community](&quot;链接&quot;)
-2. Bucket 是用户存储在项目下的第一级目录 （类似Windows中的C盘、D盘）。
-</code></pre><p>##腾讯云智能语音服务：</p>
-<p>###长语音全文识别</p>
-<p>####简介<br>长语音全文识别服务使用RESTFUL API识别语音文件，此接口采用HTTPS协议，支持语音URL和本地语音文件两种方式。</p>
-<p>####快速接入<br><img src="http://i.imgur.com/QjHp7ji.png" alt=""></p>
-<ol>
-<li>注册并登陆腾讯云账户。<a href="https://console.qcloud.com/" target="_blank" rel="external">立即注册&gt;&gt;</a></li>
-<li>申请并开通智能语音服务。<a href="http://wj.qq.com/s/423374/ba33" target="_blank" rel="external">立即申请&gt;&gt;</a></li>
-<li>确定RESTFUL API接口参数，参数详情请查看RESTFUL API接口说明。</li>
-<li>调用RESTFUL API 发送请求，上传语音数据，开始语音识别。</li>
-</ol>
-<p>####签名鉴权</p>
-<p>签名本质上是一个<strong>加密的字符串</strong>，加密字符串的<strong>原文字符串由多个字符串按照一定的规则拼接而成</strong>，再利用<strong>加密算法对字符串进行加密处理</strong>生成签名。腾讯云的鉴权系统对签名进行验证，签名有效，则允许用户访问语音全文转换识别服务；若签名无效，则返回Authorization错误消息。本文详细介绍生成签名的流程，并提供了签名实例。</p>
-<p>#####1. 获取签名所需信息<br>需要用户提供以下信息：腾讯云应用ID（appid）、腾讯云项目ID（projectid）、安全凭证SecretID和SecretKey。</p>
-<p>#####2. 生成签名串</p>
-<pre><code>   2.1 参数排序
-将所有的参数按升序排序
+        <p>#activity的四个生命周期</p>
+<p>##1. onCreate()<br>    在界面第一次创建时调用</p>
+<p>##2. onstart()<br>    在界面显示时调用</p>
+<p>##3. onResume()<br>    在界面获得焦点时，即界面可以点击时调用</p>
+<p>##4. onPause（）<br>    在界面失去焦点时，即不能点击时调用</p>
+<p>##5. onstop<br>    在界面不可见时被调用</p>
+<p>##6. onDestory()<br>    在界面被销毁时调用</p>
+<p>#横竖屏切换时的Activity的生命周期<br>    onPause()-&gt;onStop()-&gt;ondestroy()-&gt;onCreate()-&gt;onStart()-&gt;onResume()</p>
+<pre><code>1）所以为了避免横竖屏的切换，可以在ManiFest中设置参数， android:screenOrientation=&quot;portrait&quot;//设置为竖屏，同样也可以竖屏
 
-2.2 凭借请求字符串
-将上一步排好序的参数格式化为&quot;参数名称&quot;=&quot;参数值&quot;的形式，然后将格式化后的参数用&quot;&amp;&quot;拼接起来
+2）
+</code></pre><p>#activity的四种启动模式 与 任务栈</p>
+<pre><code>sigleTop : 在开启一个新的activity时，会检查任务栈的栈顶，判断是否已经开启
 
-2.3 拼接原文字符串，由以下几个参数构成
-    2.3.1 请求方法： 
-</code></pre><p>##腾讯云 万象优图<br><code>https://www.qcloud.com/document/product/275/3311</code></p>
-<p>###如何接入</p>
-<ol>
-<li>基本架构及业务流程<ol>
-<li>1 基本架构</li>
-</ol>
-</li>
-</ol>
+sigleTask : activity 只会开启出现一次，起到节省内存的作用
 
+sigleInstance : 此activity会单独创建一个任务栈，此activity只会出现一次
+</code></pre>
       
     </div>
 
@@ -461,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/18. 手机卫士/" rel="next" title="app 小知识（1）">
-                <i class="fa fa-chevron-left"></i> app 小知识（1）
+              <a href="/2017/03/11/8.sendMessage/" rel="next" title="app 小知识（4）">
+                <i class="fa fa-chevron-left"></i> app 小知识（4）
               </a>
             
           </div>
@@ -470,6 +437,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/11/10. android/" rel="prev" title="app 小知识（3）">
+                app 小知识（3） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -495,8 +466,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/21. 腾讯云专项/"
-           data-title="腾讯云服务" data-url="https://horizonyu.github.io/2017/03/11/21. 腾讯云专项/">
+      <div class="ds-thread" data-thread-key="2017/03/11/9. activity_life_cycle/"
+           data-title="activity的四个生命周期" data-url="https://horizonyu.github.io/2017/03/11/9. activity_life_cycle/">
       </div>
     
   </div>
@@ -536,7 +507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -547,7 +518,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
