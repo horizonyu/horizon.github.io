@@ -260,6 +260,444 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/06/17/5_Json_data_type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/boy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/17/5_Json_data_type/" itemprop="url">
+                  app 小知识（5）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T00:00:00+08:00">
+                2017-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/17/5_Json_data_type/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/17/5_Json_data_type/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##1 网络源码查看器<br>    UrlConnection</p>
+<pre><code>1. 创建一个URL对象；、
+2. 用过url对象获取一个HttpUrlConnection 对象
+3. 设置HttpUrlconnection 对象的一些参数请求方式，连接的超时时间
+4. 获取响应吗，判断响应吗是否是200
+5. 获取网络连接的读取流信息，将流转换成字符串，ByteArrayOutStream
+</code></pre><p>##2 Handler的使用 （ANR异常）</p>
+<pre><code>1.耗时的操作不能放在主线程中，必须放到子线程。
+2.子线程不能够更新UI
+3.使用Handler解决子线程不能更新UI的问题：
+    1.主线程创建一个Handler ，重写handleMessage方法
+    2.在子线程中，创建一个Message对象，封装获取的结果，使用主线程中的Handler对象，将Message对象发送到主线程，
+    4.主线程中的handlerMessage方法接收子线程传来的message对象，并取到结果，处理结果。
+</code></pre><p>##3 图片查看器<br>    UrlConnection</p>
+<pre><code>1.将网络请求的流信息转换成Bitmap
+    BitmapFactory.decodeStream(InputStream in);
+    imageView。setImageBitmap(bitmap);
+</code></pre><p>##4 其他的消息发放<br>    runOnUIThread(Runnable runnable); //activity的一个方法，无论当前线程是否是主线程，Runnable 中的内容都会在主线程中执行</p>
+<p>##5 新闻客户端</p>
+<pre><code>    1.Listview
+    2.网络请求 Handler  Json解析
+    3.数据库
+    4.自定义ImageView
+
+1.写布局，找到listview；
+2.获取新闻数据，首先从数据库的缓存中获取，再从服务器中获取，（使用数据库缓存到本地）；
+3.创建一个adapter，接收获取的新闻，封装adapter的显示情况，getCount（），getView（），
+        getVeiw:
+            1.模板代码，代码优化listview
+            2.创建一个条目显示的布局文件；
+            3.将布局文件转换成Veiw对象；
+            4.获取条目布局中的子对象；
+            5.获取的新闻list集合中对应的Bean对象;
+            6.将获取的数据设置给对应的控件
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/20/20_mobilesafe_2016-12-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Horizon Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/boy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello , This is Hexo !">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/20/20_mobilesafe_2016-12-13/" itemprop="url">
+                  手机卫士APP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T00:00:00+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/20/20_mobilesafe_2016-12-13/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/20_mobilesafe_2016-12-13/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###模块一： 手机防盗</p>
+<pre><code>当手机丢失后，可以通过向丢失手机发送信息对已丢失的手机进行相应的提示，具备如下功能：
+
+#*alarm*#&quot;： 播放报警音乐
+#*location*#： 向已经设置的安全手机发送手机的经纬度信息
+#*lock*#: 锁屏并设置密码
+#*wipedata*#: 清楚数据并关机（此功能在模拟器上并不能体现出来，但功能确实是有的）
+#*uninstall*#： 卸载此应用
+</code></pre><p>首先处理收到短信的逻辑代码：</p>
+<pre><code>// 1.1 监听手机是否收到短信
+       Object[] objects = (Object[]) intent.getExtras().get(&quot;pdus&quot;);
+       for (Object object : objects) {
+           SmsMessage sms = SmsMessage.createFromPdu((byte[]) object);
+            //1.2 获取短信的内容
+           String message = sms.getMessageBody();
+       ....
+       }
+</code></pre><p>####第一部分 播放报警音乐<br>           //1.3 判断短信中是否包含#<em>alarm</em>#<br>                if (message.contains(“#<em>alarm</em>#”)) {</p>
+<pre><code>    //1.4 如果包含则播放报警音乐 MediaPlayer
+    MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.ylzs);
+    mediaPlayer.setLooping(true);
+    mediaPlayer.start();
+}
+</code></pre><p>####第二部分 发送丢失手机的位置信息</p>
+<pre><code>//1.5 判断短信中是否包含#*location*#
+   if (message.contains(&quot;#*location*#&quot;)) {
+
+       //1.5.1 将获置取位置信息的功能放在服务中
+       Intent service = new Intent(context, LocaitonService.class);
+       context.startService(service);
+   }
+</code></pre><p>####获取设备管理权限的过程</p>
+<blockquote>
+<p>参考网站如下：</p>
+<p><a href="https://developer.android.google.cn/guide/topics/admin/device-admin.html#lock" target="_blank" rel="external">https://developer.android.google.cn/guide/topics/admin/device-admin.html#lock</a><br><a href="http://www.cnblogs.com/androidez/archive/2013/02/17/2915020.html" target="_blank" rel="external">http://www.cnblogs.com/androidez/archive/2013/02/17/2915020.html</a></p>
+</blockquote>
+<ol>
+<li><p>首先创建DeviceAdminReceiver的子类DeviceAdmin</p>
+<pre><code>package com.example.lockscreen;
+
+import android.app.admin.DeviceAdminReceiver;
+
+public class DeviceAdmin extends DeviceAdminReceiver {
+
+ }
+</code></pre><p>2.接着配置清单文件信息</p>
+ <receiver android:name=".Receiver.DeviceAdmin" android:label="@string/sample_device_admin" android:description="@string/sample_device_admin_description" android:permission="android.permission.BIND_DEVICE_ADMIN"><br>     <meta-data android:name="android.app.device_admin" android:resource="@xml/device_admin_sample"><br>     <intent-filter><br>         <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"><br>     </action></intent-filter><br> </meta-data></receiver>
+</li>
+<li><p>接着在 <code>res</code> 目录下创建 <code>xml</code> 目录，并在其中创建名为 <code>device_admin_sample</code> 的文件：</p>
+<pre><code>&lt;device-admin xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+  &lt;uses-policies&gt;
+&lt;limit-password /&gt;
+&lt;watch-login /&gt;
+&lt;reset-password /&gt;
+&lt;force-lock /&gt;
+&lt;wipe-data /&gt;
+&lt;expire-password /&gt;
+&lt;encrypted-storage /&gt;
+&lt;disable-camera /&gt;
+&lt;/uses-policies&gt;
+&lt;/device-admin&gt;
+</code></pre><blockquote>
+<p>上面xml信息代表着设备管理策略<br>####第三部分 清除手机信息，恢复出厂设置<br> //1. 首先获取设备策略管理器<br> DevicePolicyManager mDPM =<br> (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);</p>
+</blockquote>
+<p> //2. 清除手机数据,恢复出厂设置<br> mDPM.wipeData(0);  //注意此操作不能在真机上测试，在模拟器上测试。</p>
+</li>
+</ol>
+<p>####第四部分 锁屏<br>    //1. 首先获取设备策略管理器<br>    DevicePolicyManager mDPM =<br>    (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);</p>
+<pre><code>//2. 先设置锁屏密码并进行锁屏，注意顺序
+mDPM.resetPassword(&quot;1234&quot;,0);
+</code></pre><p>####第五部分 卸载此软件<br>根据收到的短信 进行卸载操作，此部分代码参考源码中的清单文件的配置，在广播接收器中进行修改。</p>
+<blockquote>
+<p>源码的清单文件配置如下:</p>
+</blockquote>
+<pre><code>&lt;activity android:name=&quot;.UninstallerActivity&quot;
+            android:configChanges=&quot;orientation|keyboardHidden&quot;
+            android:theme=&quot;@style/Theme.Transparent&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+            &lt;action android:name=&quot;android.intent.action.DELETE&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+            &lt;data android:scheme=&quot;package&quot; /&gt;
+        &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre><blockquote>
+<p>在广播接收器中的代码如下:</p>
+</blockquote>
+<pre><code>Intent uninstall = new Intent(&quot;android.intent.action.DELETE&quot;);
+uninstall.addFlag(FLAG_ACTIVITY_NEW_TASK);
+//添加Category信息
+uninstall.addCategory(&quot;android.intent.category.DEFAULT&quot;);
+
+//添加Data信息
+uninstall.setData(Uri.parse(&quot;package:&quot;+context.getPackageName()));
+
+context.startActivity(uninstall);
+</code></pre><hr>
+<pre><code>异常：
+    Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag；
+原因：
+    Context中有一个startActivity方法，Activity继承自Context，重载了startActivity方法。如果使用Activity的startActivity方法，不会有任何限制，而如果使用Context的startActivity方法的话，就需要开启一个新的task，遇到上面那个异常的，都是因为使用了Context的startActivity方法；
+解决方法：
+    添加 uninstall.addFlag(FLAG_ACTIVITY_NEW_TASK)；
+</code></pre><p><strong>到此第一模块的功能已经基本实现</strong></p>
+<hr>
+<p>###模块二： </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/mobilesafe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -744,7 +1182,7 @@ Cursor cursor = provider.query(Uri.parse(&quot;content://com.andorid.contacts/ra
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/14.media/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/14_media/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -766,7 +1204,7 @@ Cursor cursor = provider.query(Uri.parse(&quot;content://com.andorid.contacts/ra
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/14.media/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/14_media/" itemprop="url">
                   app 中的多媒体
                 </a>
               
@@ -824,8 +1262,8 @@ Cursor cursor = provider.query(Uri.parse(&quot;content://com.andorid.contacts/ra
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/14.media/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/14.media/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/14_media/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/14_media/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -943,8 +1381,7 @@ wm.getDefaultDisplay().getHeight(); //手机的高
 </code></pre><p>###videoView    显示有一个video文件</p>
 <pre><code>1. 就是对SurfaceView 和 MediaPlayer进行封装；
 2. mediaplayer 播放视频，只支持3gp,mp4格式，
-</code></pre><p>###vitamio</p>
-
+</code></pre>
           
         
       
@@ -1196,7 +1633,7 @@ wm.getDefaultDisplay().getHeight(); //手机的高
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/2. xml/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/2_xml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -1218,7 +1655,7 @@ wm.getDefaultDisplay().getHeight(); //手机的高
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/2. xml/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/2_xml/" itemprop="url">
                   XML（Extensible Markup Language,可扩展标记语言）
                 </a>
               
@@ -1258,8 +1695,8 @@ wm.getDefaultDisplay().getHeight(); //手机的高
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
-                    <span itemprop="name">android //在此处输入这篇文章的分类。</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -1276,8 +1713,8 @@ wm.getDefaultDisplay().getHeight(); //手机的高
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/2. xml/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/2. xml/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/2_xml/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/2_xml/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1383,7 +1820,7 @@ public class PullTool{
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/23. Spark_develop_guid/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/23_Spark_develop_guid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -1405,7 +1842,7 @@ public class PullTool{
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/23. Spark_develop_guid/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/23_Spark_develop_guid/" itemprop="url">
                   Spark 开发指南
                 </a>
               
@@ -1463,8 +1900,8 @@ public class PullTool{
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/23. Spark_develop_guid/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/23. Spark_develop_guid/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/23_Spark_develop_guid/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/23_Spark_develop_guid/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1492,14 +1929,14 @@ public class PullTool{
       
         
           
-            <p>###简介</p>
+            <p>##简介</p>
 <ol>
 <li><p>Spark 主提供的主要的抽象概念是一个弹性的分布式数据（RDDS）集，它是一个元素集合，划分到集群的不同节点上，可以被并行操作。RDDS的创建可以从Hadoop文件系统（或者任何支持Hadoop的文件系统）上的一个文件开始，或者通过转换这个驱动程序中已存在的Scala集合而来。用户也可以使Spark持久化到一个RDD到内存中，使其能够在并行操作中被有效的重用。最后，RDDS能自动从节点故障中恢复。</p>
 </li>
 <li><p>Spark提供的第二个抽象概念是共享变量，它可以在并行操作中使用。默认情况下，Spark通过不同节点的一些列任务来运行一个函数。它将每一个函数中用到的变量的拷贝传递到每一个任务中。有时候，一个变量需要在不同的任务之间、或者任务和驱动程序之间共享。Spark支持两种类型的变量共享：广播变量，可以在所有节点中缓存一个值；累加器，一个只能做加法的变量，例如计数器和求和。</p>
 </li>
 </ol>
-<p>###弹性分布式数据集RDDS<br>Spark 反复围绕的一个概念是弹性分布式数据集，它是一个有容错机制的元素集合，并且可以被并行操作。有两种创建RDDS的方法，<strong>并行化你的驱动程序的已有的集合</strong>，或者<strong>引用一个外部存储系统的数据集</strong>，例如一个文件系统，HDFS、HBase,或者任何可以提供一个Hadoop　InputFormat的数据源。</p>
+<p>##弹性分布式数据集RDDS<br>Spark 反复围绕的一个概念是弹性分布式数据集，它是一个有容错机制的元素集合，并且可以被并行操作。有两种创建RDDS的方法，<strong>并行化你的驱动程序的已有的集合</strong>，或者<strong>引用一个外部存储系统的数据集</strong>，例如一个文件系统，HDFS、HBase,或者任何可以提供一个Hadoop　InputFormat的数据源。</p>
 <p>##Spark 运行架构</p>
 <p>###1. 术语定义</p>
 <ol>
@@ -1549,7 +1986,7 @@ public class PullTool{
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/1. SharedPreference/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/1_SharedPreference/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -1571,7 +2008,7 @@ public class PullTool{
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/1. SharedPreference/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/1_SharedPreference/" itemprop="url">
                   SharedPreference基础知识
                 </a>
               
@@ -1629,8 +2066,8 @@ public class PullTool{
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/1. SharedPreference/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/1. SharedPreference/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/1_SharedPreference/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/1_SharedPreference/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1709,7 +2146,7 @@ public class PullTool{
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/11. Service/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/11_Service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -1731,7 +2168,7 @@ public class PullTool{
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/11. Service/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/11_Service/" itemprop="url">
                   service的使用
                 </a>
               
@@ -1789,8 +2226,8 @@ public class PullTool{
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/11. Service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/11. Service/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/11_Service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/11_Service/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1827,7 +2264,7 @@ public class PullTool{
 （4）background process 后台进程  当前用户不可见 相当于activity 的 执行了 onStop（）方法
 （5）empty process 空进程 不会维持任何组件运行 但不会被立即杀死   为了能够缓存  提高下一次启动的速度
 </code></pre><p>##3. start方式开启服务的特点<br>    android 中的服务在后台进行，没有界面的activity<br>    定义四大组件的方式都是一样的<br>    定义一个类继承service</p>
-<pre><code>activity 你大爷是service
+<pre><code>activity 
 
 特点：
       1. 服务通过startservice 方式开启，第一次点击按钮开启服务 会执行服务的onCreate 和 onStart 方法
@@ -1995,7 +2432,7 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/22. scala/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/22_scala/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -2017,7 +2454,7 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/22. scala/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/11/22_scala/" itemprop="url">
                   后缀树算法的并行化构建
                 </a>
               
@@ -2075,8 +2512,8 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/22. scala/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/22. scala/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/22_scala/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/22_scala/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2104,397 +2541,8 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
       
         
           
-            <p>###Spark简介<br><a href="http://edu.csdn.net/course/detail/2173" target="_blank" rel="external">http://edu.csdn.net/course/detail/2173</a></p>
+            <p>###Spark简介<br>    <a href="http://edu.csdn.net/course/detail/2173" target="_blank" rel="external">http://edu.csdn.net/course/detail/2173</a></p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/17. project_1_mobilesafe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Horizon Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/boy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello , This is Hexo !">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/11/17. project_1_mobilesafe/" itemprop="url">
-                  app 小知识（2）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
-                2017-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
-                    <span itemprop="name">android//在此处输入这篇文章的分类。</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/11/17. project_1_mobilesafe/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/17. project_1_mobilesafe/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#1. 引导页</p>
-<h2 id="1-文字阴影的效果"><a href="#1-文字阴影的效果" class="headerlink" title="1. 文字阴影的效果"></a>1. 文字阴影的效果</h2><pre><code>shadowx= &quot;1&quot;
-shadowy= &quot;1&quot;
-shadowColor = &quot;#f00&quot;  //红 RGB
-shadowRadius = &quot;1&quot;    //阴影所在范围
-</code></pre><p>##2.进度条</p>
-<p>##3. 去头操作</p>
-<pre><code>1. requestWindowFeature(Window.FEATURE_NO_TITLE);
-2. 在清单文件中，application节点下  android:theme = &quot;@android:style/Theme.Light.NoTitleBar&quot;
-</code></pre><p>##4. 获取版本名称</p>
-<pre><code>1. 获取包管理者: getPackageManager()
-2. 指定包名的基本信息： getPackageInfo();
-</code></pre><p>##5. 获取更新版本信息 JSON格式</p>
-<pre><code>1. 封装URL new URL(&quot;http://localhost:8080/xxx.json&quot;);
-2. 开启一个连接  openConnection（）;
-3. 设置请求参数：
-    1. 41
-
-4. 获取请求的成功响应吗
-5. 以流的形式 将数据获取下来
-6. 将流数据转换为字符串
-    1.    vd
-7. json的解析
-    1. JsonObject jsonObject = new JsonObject();
-    2. String verisonName  = jsonObject.getString(&quot;versionName&quot;, );
-
-8. 比对版本号
-    1. 
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/12. database/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Horizon Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/boy.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello , This is Hexo !">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/11/12. database/" itemprop="url">
-                  sqLite的使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
-                2017-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
-                    <span itemprop="name">android//在此处输入这篇文章的分类。</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/11/12. database/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/12. database/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#1、书籍库的使用方法</p>
-<p>##数据库的第一种增、删、改、查</p>
-<pre><code>创建一个帮助类的对象，调用getReadablebase()方法，会帮助我们打开一个数据库
-
-这是第一种方法，特点：
-
-增删改没有返回值，不能判断sql语句是否执行成功，而且很容易写错
-</code></pre><p>##1）、增<br>    //sql:sql 语句， bindArgs:<br>    db.execSQL(sql,bindArds)<br>    db.execSQL</p>
-<p>##3）、查<br>    Cursor cursor = db.rawQuery(sql,sel);//返回一个 Cursor 对象，</p>
-<pre><code>//获取 cursor 中的内容，
-if(cursor != null &amp;&amp; cursor.getCount() &gt; 0)  //判断cursor 中是否存在数据
-    {
-        //循环遍历结果集，获得每一行的内容
-        while(cursor.moveToNext())  //设定条件，cursor 能否定位到下一行
-            {
-                int id = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String phone = cursor.getStirng(2);
-            }
-    }
-</code></pre><p>##第二种方法创建数据库</p>
-<pre><code>调用相应的方法，如 insert(),update(),delete(),query(),
-特点：
-    -增删改 有返回值，能判断sql语句是否执行成功，查询不够灵活，不能做多表查询，
-    -所以增删改 使用第二种方式，查询使用第一种方式，
-
-//增
-ContextValue values = new ContextValue();
-values.put(&quot;name&quot;,bean.name);
-values.put(&quot;phone&quot;,bean.phone);
-//table: 表名 nullColumHack： 可以为空，表示添加一个空行 ，values: 添加一行数据的值,返回值代表添加这个新的一行的ID -1 代表添加失败
-db.insert(table,nullColumHack,values);
-long result = db.insert(&quot;info&quot;,null,values);
-
-db.close();
-
-if(result ！= -1){
-//-1代表添加失败
-    return true;
-else
-    return false;
-
-}
-
-//删
-//返回值代表受影响的行数即，删除多少行
-int result = db.delete(&quot;table&quot;,&quot;name = ?&quot;,&quot;new String[]{name}&quot;);
-return result;
-
-//查
-
-Cursor cursor = db.query(&quot;info&quot;,new Stirng[]{&quot;_id&quot;,&quot;name&quot;,&quot;phone&quot;},&quot;name = ?&quot;,new Stirng[]{name},null,null,&quot;_id dec&quot;)
-</code></pre><p>#2、数据库中的事务</p>
-<pre><code>事务： 执行多条sql语句，同时执行成功，，同时执行失败。
-
-db.beginTransaction();  //开启一个数据库事务
-try{
-........
-
-db.setTranSactionSuccessful();
-}finally{
-db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错误之前的代码sql 语句
-}
-</code></pre>
           
         
       
@@ -2574,7 +2622,7 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2585,12 +2633,21 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
