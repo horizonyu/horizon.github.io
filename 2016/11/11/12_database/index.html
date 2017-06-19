@@ -87,25 +87,40 @@
 
 
 
-<meta name="description" content="#service服务    android 中的服务在后台进行，没有界面的activity
-##1. 进程的概念        四大组件都是运行在主线程中
-##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
-（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
+<meta name="description" content="#1、书籍库的使用方法
+##数据库的第一种增、删、改、查
+创建一个帮助类的对象，调用getReadablebase()方法，会帮助我们打开一个数据库
+
+这是第一种方法，特点：
+
+增删改没有返回值，不能判断sql语句是否执行成功，而且很容易写错
+##1）、增    //sql:sql 语句， bindArgs:    db.execSQL(sql,bindArds)    db.execSQL
+##">
 <meta property="og:type" content="article">
-<meta property="og:title" content="service的使用">
-<meta property="og:url" content="https://horizonyu.github.io/2017/03/11/11_Service/index.html">
+<meta property="og:title" content="sqLite的使用">
+<meta property="og:url" content="https://horizonyu.github.io/2016/11/11/12_database/index.html">
 <meta property="og:site_name" content="Hello , This is Hexo !">
-<meta property="og:description" content="#service服务    android 中的服务在后台进行，没有界面的activity
-##1. 进程的概念        四大组件都是运行在主线程中
-##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
-（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
-<meta property="og:updated_time" content="2017-06-16T10:04:21.467Z">
+<meta property="og:description" content="#1、书籍库的使用方法
+##数据库的第一种增、删、改、查
+创建一个帮助类的对象，调用getReadablebase()方法，会帮助我们打开一个数据库
+
+这是第一种方法，特点：
+
+增删改没有返回值，不能判断sql语句是否执行成功，而且很容易写错
+##1）、增    //sql:sql 语句， bindArgs:    db.execSQL(sql,bindArds)    db.execSQL
+##">
+<meta property="og:updated_time" content="2017-06-17T01:56:54.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="service的使用">
-<meta name="twitter:description" content="#service服务    android 中的服务在后台进行，没有界面的activity
-##1. 进程的概念        四大组件都是运行在主线程中
-##2. 进程的生命周期，    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1
-（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity">
+<meta name="twitter:title" content="sqLite的使用">
+<meta name="twitter:description" content="#1、书籍库的使用方法
+##数据库的第一种增、删、改、查
+创建一个帮助类的对象，调用getReadablebase()方法，会帮助我们打开一个数据库
+
+这是第一种方法，特点：
+
+增删改没有返回值，不能判断sql语句是否执行成功，而且很容易写错
+##1）、增    //sql:sql 语句， bindArgs:    db.execSQL(sql,bindArds)    db.execSQL
+##">
 
 
 
@@ -133,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://horizonyu.github.io/2017/03/11/11_Service/"/>
+  <link rel="canonical" href="https://horizonyu.github.io/2016/11/11/12_database/"/>
 
 
 
 
 
-  <title> service的使用 | Hello , This is Hexo ! </title>
+  <title> sqLite的使用 | Hello , This is Hexo ! </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +283,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2017/03/11/11_Service/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2016/11/11/12_database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -289,7 +304,7 @@
             
             
               
-                service的使用
+                sqLite的使用
               
             
           </h1>
@@ -304,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:17:29+08:00">
-                2017-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-11T00:00:00+08:00">
+                2016-11-11
               </time>
             
 
@@ -327,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android-在此处输入这篇文章的分类。/" itemprop="url" rel="index">
-                    <span itemprop="name">android//在此处输入这篇文章的分类。</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -345,8 +360,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/11_Service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/11_Service/" itemprop="commentCount"></span>
+                <a href="/2016/11/11/12_database/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/12_database/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -372,144 +387,70 @@
       
 
       
-        <p>#service服务<br>    android 中的服务在后台进行，没有界面的activity</p>
-<p>##1. 进程的概念<br>        四大组件都是运行在主线程中</p>
-<p>##2. 进程的生命周期，<br>    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1</p>
-<pre><code>（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity是的onResume（）方法，聚焦
-（2）visible process 可见进程 用户没有交互  但用户能看得见页面  相当于activity 的 onPause（）方法 ，不聚焦，但可见
-（3）service process 服务进程 通过startService()开启一个服务
-（4）background process 后台进程  当前用户不可见 相当于activity 的 执行了 onStop（）方法
-（5）empty process 空进程 不会维持任何组件运行 但不会被立即杀死   为了能够缓存  提高下一次启动的速度
-</code></pre><p>##3. start方式开启服务的特点<br>    android 中的服务在后台进行，没有界面的activity<br>    定义四大组件的方式都是一样的<br>    定义一个类继承service</p>
-<pre><code>activity 
+        <p>#1、书籍库的使用方法</p>
+<p>##数据库的第一种增、删、改、查</p>
+<pre><code>创建一个帮助类的对象，调用getReadablebase()方法，会帮助我们打开一个数据库
 
-特点：
-      1. 服务通过startservice 方式开启，第一次点击按钮开启服务 会执行服务的onCreate 和 onStart 方法
-      2. 如果第二次开始在点击按钮开启服务  服务之后执行 onStart方法
-      3. 服务被开启后， 会在设置页面里面的running ；里面找得到这个服务
-      4. startservice 方式开启服务 服务就会在后台长期运行 直到用户手动停止 或者调用stopService 方法  服务才会被销毁 
-</code></pre><p>##4. 电话窃听器案例<br>    new Thread(){}.start();   //实时更新  有可能被杀死 但如果放在服务里面是不会被被动杀死的，除非主动调用一些方法</p>
-<pre><code>服务和线程的区别：  
-</code></pre><p>###新的API TelephonyManager  通过getSystenService（TELEPHONY_SERVICE）</p>
-<ol>
-<li><p>获取电话管理者的实例</p>
-<pre><code>//1. 获取电话管理者的实例
-TelephonyManager tm =  (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-</code></pre></li>
-</ol>
-<ol>
-<li><p>注册一个电话状态的监听</p>
-<pre><code>//2. 注册一个电话状态的监听
-tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
-</code></pre></li>
-<li><p>在监听器中实现onCallStateChanged方法</p>
-<pre><code>//当电话的状态发生变化时调用
- @Override
- public void onCallStateChanged(int state, String incomingNumber) {
-     super.onCallStateChanged(state, incomingNumber);
+这是第一种方法，特点：
 
- //判断具体是哪一个 电话状态
- switch (state){
-
-     case TelephonyManager.CALL_STATE_RINGING:  //响铃状态
-         System.out.println(&quot;现在是响铃状态，需要开始准备录音机&quot;);
-
-         break;
-
-     case TelephonyManager.CALL_STATE_OFFHOOK:  //接通状态
-         System.out.print(&quot;开始录音&quot;);
-
-         //1. 获取MediaRecorder实例
-         recorder = new MediaRecorder();
-
-         //2. 设置音频的来源
-         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-
-         //3. 设置音频的输出格式
-         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-
-         //4. 设置音频的编码方式
-         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-         //设置音频文件的保存路径
-         recorder.setOutputFile(&quot;/mnt/sdcard/luyin.avi&quot;);
-
-         try {
-             recorder.prepare();
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-
-         //开始录音
-         recorder.start();
-
-         System.out.println(&quot;正在录音&quot;);
-</code></pre></li>
-</ol>
-<pre><code>        break;
-
-    case TelephonyManager.CALL_STATE_IDLE:   //空闲状态
-        if(recorder != null){
-            recorder.stop();    //停止录音
-           // recorder.reset();   // You can reuse the object by going back to setAudioSource() step
-            recorder.release();  // Now the object cannot be reused
-            recorder = null;
-        }
-
-        break;
-
+增删改没有返回值，不能判断sql语句是否执行成功，而且很容易写错
+</code></pre><p>##1）、增<br>    //sql:sql 语句， bindArgs:<br>    db.execSQL(sql,bindArds)<br>    db.execSQL</p>
+<p>##3）、查<br>    Cursor cursor = db.rawQuery(sql,sel);//返回一个 Cursor 对象，</p>
+<pre><code>//获取 cursor 中的内容，
+if(cursor != null &amp;&amp; cursor.getCount() &gt; 0)  //判断cursor 中是否存在数据
+    {
+        //循环遍历结果集，获得每一行的内容
+        while(cursor.moveToNext())  //设定条件，cursor 能否定位到下一行
+            {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String phone = cursor.getStirng(2);
+            }
     }
+</code></pre><p>##第二种方法创建数据库</p>
+<pre><code>调用相应的方法，如 insert(),update(),delete(),query(),
+特点：
+    -增删改 有返回值，能判断sql语句是否执行成功，查询不够灵活，不能做多表查询，
+    -所以增删改 使用第二种方式，查询使用第一种方式，
+
+//增
+ContextValue values = new ContextValue();
+values.put(&quot;name&quot;,bean.name);
+values.put(&quot;phone&quot;,bean.phone);
+//table: 表名 nullColumHack： 可以为空，表示添加一个空行 ，values: 添加一行数据的值,返回值代表添加这个新的一行的ID -1 代表添加失败
+db.insert(table,nullColumHack,values);
+long result = db.insert(&quot;info&quot;,null,values);
+
+db.close();
+
+if(result ！= -1){
+//-1代表添加失败
+    return true;
+else
+    return false;
+
 }
-</code></pre><ol>
-<li><p>同时需要加上相应的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##5. 在服务中注册特殊的广播接收者<br>    通过startService开启服务，该服务会在后台长期执行，直到被手动销毁！！！！而如果在广播接收者的onReceive方法中注册，一旦退出程序，注册的广播就会失效！！！</p>
-<pre><code>所以在service的onCreate方法中注册广播接收者，代替在MainFest文件中注册。
-</code></pre><p>步骤如下：( day 08 )</p>
-<pre><code>1. 创建广播接收者
-2. 创建一个服务，用来注册广播接收者的一些参数
-3. 配置service
-</code></pre><p>##6. bindService开启服务  与  StartService开启服务</p>
-<pre><code>bindService： 连接到服务 刚开始建立服务时会调 onCreate 和 onBind 方法  其对应unbindService 方法,否则会报 leak错误，
-</code></pre><p><strong>特点:   一旦程序退出service就会被销毁，通过bind 方法开启服务，不能在设置中查到， 相当于一个隐形的服务   bindService 不能多次解绑，多次解绑会报错</strong></p>
-<pre><code>startService: 
-</code></pre><p>###引入bindService方法的原因：</p>
-<pre><code>为了能够调用服务里的方法，为了能够更好的说明，下面介绍一个例子：  实现通过服务中的onBind 方法调用服务里的方法
 
-步骤：
-1. 创建一个Service ,在service里添加一个方法，用来被调用 ;
-2. 创建一个中间人对象Mybinder，继承IBinder的子类 Binder，并实现调用所需的方法 ;
-3. 在onBinder 方法中返回 MyBinder对象 ；
-4. 在Activity 的 OnCreate 的方法中调用bindService方法，其中在参数的接口中将MyBinder对象取到 ；
-5. 在点击事件中 通过此对象调用service里的方法
-</code></pre><p>##7. 百度音乐盒框架</p>
-<ol>
-<li>需求： 既想让服务在后台长期运行，又想调用服务里的方法，利用混合方式开启服务，但顺序一定是 </li>
-</ol>
-<pre><code>1. 先开启startService 保证服务在后台长期运行；
-2. 再开启 bindService 获取 服务里的方法；
-3. 接着 调用 unbindService ；
-4. 最后调用stopService 停止服务。
+//删
+//返回值代表受影响的行数即，删除多少行
+int result = db.delete(&quot;table&quot;,&quot;name = ?&quot;,&quot;new String[]{name}&quot;);
+return result;
 
-**注意此时，调用unbind方法不会销毁服务 从而能够保证服务能够在后台长期运行。**
-</code></pre><p>##8. aidl的介绍b  android interface defination language  接口定义语言</p>
-<pre><code>1. 远程服务： 运行在其他应用程序的服务；
-2. 本地服务： 运行在自己应用程序的服务；
-3. 进行进程之间的通信  IPC 
-</code></pre><p>###与之前那的区别是：</p>
-<pre><code>1. 需要添加将接口文件更改为.aidl的格式；
-2. 在aidl文件中是不识别public 标识的，所以应该去掉；
-3. 将中间人对象继承IBinder更改为继承 Stub对象；
-4. 在启动远程服务时，需要调用隐式意图； 
-5. 在获取中间人对象时，需要进行类型的转换，需要调用 Stub.as...方法；
-6. 为了能够在两个应用中保持相同的aidl文件，需要相同的包名；
-</code></pre><p>##7. 内容提供者（ContentProvider）</p>
+//查
 
+Cursor cursor = db.query(&quot;info&quot;,new Stirng[]{&quot;_id&quot;,&quot;name&quot;,&quot;phone&quot;},&quot;name = ?&quot;,new Stirng[]{name},null,null,&quot;_id dec&quot;)
+</code></pre><p>#2、数据库中的事务</p>
+<pre><code>事务： 执行多条sql语句，同时执行成功，，同时执行失败。
+
+db.beginTransaction();  //开启一个数据库事务
+try{
+........
+
+db.setTranSactionSuccessful();
+}finally{
+db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错误之前的代码sql 语句
+}
+</code></pre>
       
     </div>
 
@@ -539,8 +480,8 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/22_scala/" rel="next" title="后缀树算法的并行化构建">
-                <i class="fa fa-chevron-left"></i> 后缀树算法的并行化构建
+              <a href="/2016/11/11/10_android/" rel="next" title="app 小知识（3）">
+                <i class="fa fa-chevron-left"></i> app 小知识（3）
               </a>
             
           </div>
@@ -549,8 +490,8 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/11/1_SharedPreference/" rel="prev" title="SharedPreference基础知识">
-                SharedPreference基础知识 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/11/rectangle/" rel="prev" title="app 小知识">
+                app 小知识 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -577,8 +518,8 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/11/11_Service/"
-           data-title="service的使用" data-url="https://horizonyu.github.io/2017/03/11/11_Service/">
+      <div class="ds-thread" data-thread-key="2016/11/11/12_database/"
+           data-title="sqLite的使用" data-url="https://horizonyu.github.io/2016/11/11/12_database/">
       </div>
     
   </div>
@@ -618,7 +559,7 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -629,7 +570,7 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -640,7 +581,7 @@ tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
