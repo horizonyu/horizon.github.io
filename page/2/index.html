@@ -1528,7 +1528,7 @@ sigleInstance : 此activity会单独创建一个任务栈，此activity只会出
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2016/11/11/11_Service/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2016/11/11/10_android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -1550,8 +1550,8 @@ sigleInstance : 此activity会单独创建一个任务栈，此activity只会出
             
               
                 
-                <a class="post-title-link" href="/2016/11/11/11_Service/" itemprop="url">
-                  service的使用
+                <a class="post-title-link" href="/2016/11/11/10_android/" itemprop="url">
+                  app 小知识（3）
                 </a>
               
             
@@ -1608,8 +1608,8 @@ sigleInstance : 此activity会单独创建一个任务栈，此activity只会出
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/11/11_Service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/11_Service/" itemprop="commentCount"></span>
+                <a href="/2016/11/11/10_android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/10_android/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1637,144 +1637,54 @@ sigleInstance : 此activity会单独创建一个任务栈，此activity只会出
       
         
           
-            <p>#service服务<br>    android 中的服务在后台进行，没有界面的activity</p>
-<p>##1. 进程的概念<br>        四大组件都是运行在主线程中</p>
-<p>##2. 进程的生命周期，<br>    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1</p>
-<pre><code>（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity是的onResume（）方法，聚焦
-（2）visible process 可见进程 用户没有交互  但用户能看得见页面  相当于activity 的 onPause（）方法 ，不聚焦，但可见
-（3）service process 服务进程 通过startService()开启一个服务
-（4）background process 后台进程  当前用户不可见 相当于activity 的 执行了 onStop（）方法
-（5）empty process 空进程 不会维持任何组件运行 但不会被立即杀死   为了能够缓存  提高下一次启动的速度
-</code></pre><p>##3. start方式开启服务的特点<br>    android 中的服务在后台进行，没有界面的activity<br>    定义四大组件的方式都是一样的<br>    定义一个类继承service</p>
-<pre><code>activity 
+            <p>#1. 样式和主题 style和theme</p>
+<p>##在布局文件中将共同的布局属性抽出来定义为一个额外的style文件，如下</p>
+<pre><code>&lt;style name = &quot;my_style&quot;&gt;
+    &lt;item name = &quot;android:layout_width&quot;&gt;match_parent&lt;/item&gt;
+    &lt;item name = &quot;android:layout_height&quot;&gt;wrap_content&lt;/item&gt;
+    &lt;item name = &quot;android:textColor&quot;&gt;#000000&lt;/item&gt;
+    &lt;item name = &quot;android:textSize&quot;&gt;25sp&lt;/item&gt;
+&lt;/style&gt;
 
-特点：
-      1. 服务通过startservice 方式开启，第一次点击按钮开启服务 会执行服务的onCreate 和 onStart 方法
-      2. 如果第二次开始在点击按钮开启服务  服务之后执行 onStart方法
-      3. 服务被开启后， 会在设置页面里面的running ；里面找得到这个服务
-      4. startservice 方式开启服务 服务就会在后台长期运行 直到用户手动停止 或者调用stopService 方法  服务才会被销毁 
-</code></pre><p>##4. 电话窃听器案例<br>    new Thread(){}.start();   //实时更新  有可能被杀死 但如果放在服务里面是不会被被动杀死的，除非主动调用一些方法</p>
-<pre><code>服务和线程的区别：  
-</code></pre><p>###新的API TelephonyManager  通过getSystenService（TELEPHONY_SERVICE）</p>
-<ol>
-<li><p>获取电话管理者的实例</p>
-<pre><code>//1. 获取电话管理者的实例
-TelephonyManager tm =  (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-</code></pre></li>
-</ol>
-<ol>
-<li><p>注册一个电话状态的监听</p>
-<pre><code>//2. 注册一个电话状态的监听
-tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
-</code></pre></li>
-<li><p>在监听器中实现onCallStateChanged方法</p>
-<pre><code>//当电话的状态发生变化时调用
- @Override
- public void onCallStateChanged(int state, String incomingNumber) {
-     super.onCallStateChanged(state, incomingNumber);
+在布局文件中的使用方法：
 
- //判断具体是哪一个 电话状态
- switch (state){
+&lt;TextView
+    style = &quot;@style/my_style&quot;
 
-     case TelephonyManager.CALL_STATE_RINGING:  //响铃状态
-         System.out.println(&quot;现在是响铃状态，需要开始准备录音机&quot;);
+/&gt;
+</code></pre><p>##共同点： 定义的方式一样</p>
+<p>##不用点： style作用的范围比较窄，（控件 button textView） theme 作用在activity或者Application节点下</p>
+<p>#2. android中国际化 i18n</p>
+<pre><code>需要在res文件下新增values-zh、values-en......国家环境目录，并设置相应的string的值
+</code></pre><p>#3. 常见对话框</p>
+<pre><code>AlertDialog
 
-         break;
+1.普通对话框：
+             AlertDialog.Builder builder = new Builder(this);
+             builder.setTitle(&quot;警告&quot;);
+             builder.setMessage(&quot;世界&quot;)
+             builder.setPositiveButton(&quot;确定&quot;，new onClickedListener(){
 
-     case TelephonyManager.CALL_STATE_OFFHOOK:  //接通状态
-         System.out.print(&quot;开始录音&quot;);
 
-         //1. 获取MediaRecorder实例
-         recorder = new MediaRecorder();
 
-         //2. 设置音频的来源
-         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    });
+             builder.show();
 
-         //3. 设置音频的输出格式
-         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+2.单选对话框:
+            AlertDialog.Builder builder = new Builder(this);
+             builder.setTitle(&quot;选课&quot;);
+            String items[] = {&quot;android&quot;,&quot;c++&quot;,&quot;c&quot;,&quot;c#&quot;};
+            builder.setSingleChoiceItems();  //
+             builder.show();                
 
-         //4. 设置音频的编码方式
-         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-         //设置音频文件的保存路径
-         recorder.setOutputFile(&quot;/mnt/sdcard/luyin.avi&quot;);
-
-         try {
-             recorder.prepare();
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-
-         //开始录音
-         recorder.start();
-
-         System.out.println(&quot;正在录音&quot;);
-</code></pre></li>
-</ol>
-<pre><code>        break;
-
-    case TelephonyManager.CALL_STATE_IDLE:   //空闲状态
-        if(recorder != null){
-            recorder.stop();    //停止录音
-           // recorder.reset();   // You can reuse the object by going back to setAudioSource() step
-            recorder.release();  // Now the object cannot be reused
-            recorder = null;
-        }
-
-        break;
-
-    }
-}
-</code></pre><ol>
-<li><p>同时需要加上相应的权限：</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
-</code></pre></li>
-</ol>
-<p>##5. 在服务中注册特殊的广播接收者<br>    通过startService开启服务，该服务会在后台长期执行，直到被手动销毁！！！！而如果在广播接收者的onReceive方法中注册，一旦退出程序，注册的广播就会失效！！！</p>
-<pre><code>所以在service的onCreate方法中注册广播接收者，代替在MainFest文件中注册。
-</code></pre><p>步骤如下：( day 08 )</p>
-<pre><code>1. 创建广播接收者
-2. 创建一个服务，用来注册广播接收者的一些参数
-3. 配置service
-</code></pre><p>##6. bindService开启服务  与  StartService开启服务</p>
-<pre><code>bindService： 连接到服务 刚开始建立服务时会调 onCreate 和 onBind 方法  其对应unbindService 方法,否则会报 leak错误，
-</code></pre><p><strong>特点:   一旦程序退出service就会被销毁，通过bind 方法开启服务，不能在设置中查到， 相当于一个隐形的服务   bindService 不能多次解绑，多次解绑会报错</strong></p>
-<pre><code>startService: 
-</code></pre><p>###引入bindService方法的原因：</p>
-<pre><code>为了能够调用服务里的方法，为了能够更好的说明，下面介绍一个例子：  实现通过服务中的onBind 方法调用服务里的方法
-
-步骤：
-1. 创建一个Service ,在service里添加一个方法，用来被调用 ;
-2. 创建一个中间人对象Mybinder，继承IBinder的子类 Binder，并实现调用所需的方法 ;
-3. 在onBinder 方法中返回 MyBinder对象 ；
-4. 在Activity 的 OnCreate 的方法中调用bindService方法，其中在参数的接口中将MyBinder对象取到 ；
-5. 在点击事件中 通过此对象调用service里的方法
-</code></pre><p>##7. 百度音乐盒框架</p>
-<ol>
-<li>需求： 既想让服务在后台长期运行，又想调用服务里的方法，利用混合方式开启服务，但顺序一定是 </li>
-</ol>
-<pre><code>1. 先开启startService 保证服务在后台长期运行；
-2. 再开启 bindService 获取 服务里的方法；
-3. 接着 调用 unbindService ；
-4. 最后调用stopService 停止服务。
-
-**注意此时，调用unbind方法不会销毁服务 从而能够保证服务能够在后台长期运行。**
-</code></pre><p>##8. aidl的介绍b  android interface defination language  接口定义语言</p>
-<pre><code>1. 远程服务： 运行在其他应用程序的服务；
-2. 本地服务： 运行在自己应用程序的服务；
-3. 进行进程之间的通信  IPC 
-</code></pre><p>###与之前那的区别是：</p>
-<pre><code>1. 需要添加将接口文件更改为.aidl的格式；
-2. 在aidl文件中是不识别public 标识的，所以应该去掉；
-3. 将中间人对象继承IBinder更改为继承 Stub对象；
-4. 在启动远程服务时，需要调用隐式意图； 
-5. 在获取中间人对象时，需要进行类型的转换，需要调用 Stub.as...方法；
-6. 为了能够在两个应用中保持相同的aidl文件，需要相同的包名；
-</code></pre><p>##7. 内容提供者（ContentProvider）</p>
-
+3.多选对话框
+4.进度条对话框
+</code></pre><p>##补充：<br>        this 继承Context，子类中含有父类中没有的属性，（对话框不能使用getApplicationContext()）<br>        getApplicationContext(); //获得Context</p>
+<p>##android 中的动画<br>    1.属性动画：</p>
+<pre><code>2.补间动画
+3.帧动画 ：
+        加载一系列的图片资源，在res文件下新建drawable文件，并将一系列的图片放在此文件中，在activity中调用方法，实际上就是一系列图片的连续播放
+</code></pre>
           
         
       
@@ -2238,7 +2148,7 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2016/11/11/10_android/">
+    <link itemprop="mainEntityOfPage" href="https://horizonyu.github.io/2016/11/11/11_Service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Horizon Yu">
@@ -2260,8 +2170,8 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
             
               
                 
-                <a class="post-title-link" href="/2016/11/11/10_android/" itemprop="url">
-                  app 小知识（3）
+                <a class="post-title-link" href="/2016/11/11/11_Service/" itemprop="url">
+                  service的使用
                 </a>
               
             
@@ -2318,8 +2228,8 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/11/10_android/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/10_android/" itemprop="commentCount"></span>
+                <a href="/2016/11/11/11_Service/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/11_Service/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2347,54 +2257,144 @@ db.endtransaction();  // 判断事务是否成功，如果不成功，回滚错�
       
         
           
-            <p>#1. 样式和主题 style和theme</p>
-<p>##在布局文件中将共同的布局属性抽出来定义为一个额外的style文件，如下</p>
-<pre><code>&lt;style name = &quot;my_style&quot;&gt;
-    &lt;item name = &quot;android:layout_width&quot;&gt;match_parent&lt;/item&gt;
-    &lt;item name = &quot;android:layout_height&quot;&gt;wrap_content&lt;/item&gt;
-    &lt;item name = &quot;android:textColor&quot;&gt;#000000&lt;/item&gt;
-    &lt;item name = &quot;android:textSize&quot;&gt;25sp&lt;/item&gt;
-&lt;/style&gt;
+            <p>#service服务<br>    android 中的服务在后台进行，没有界面的activity</p>
+<p>##1. 进程的概念<br>        四大组件都是运行在主线程中</p>
+<p>##2. 进程的生命周期，<br>    操作系统会根据下面周期的优先级进行回收内存，优先级越低越容易被回收，所以回收的顺序是 5 4 3 2 1</p>
+<pre><code>（1）foreground process 前台进程  用户正在交互  可以理解为相当于activity是的onResume（）方法，聚焦
+（2）visible process 可见进程 用户没有交互  但用户能看得见页面  相当于activity 的 onPause（）方法 ，不聚焦，但可见
+（3）service process 服务进程 通过startService()开启一个服务
+（4）background process 后台进程  当前用户不可见 相当于activity 的 执行了 onStop（）方法
+（5）empty process 空进程 不会维持任何组件运行 但不会被立即杀死   为了能够缓存  提高下一次启动的速度
+</code></pre><p>##3. start方式开启服务的特点<br>    android 中的服务在后台进行，没有界面的activity<br>    定义四大组件的方式都是一样的<br>    定义一个类继承service</p>
+<pre><code>activity 
 
-在布局文件中的使用方法：
+特点：
+      1. 服务通过startservice 方式开启，第一次点击按钮开启服务 会执行服务的onCreate 和 onStart 方法
+      2. 如果第二次开始在点击按钮开启服务  服务之后执行 onStart方法
+      3. 服务被开启后， 会在设置页面里面的running ；里面找得到这个服务
+      4. startservice 方式开启服务 服务就会在后台长期运行 直到用户手动停止 或者调用stopService 方法  服务才会被销毁 
+</code></pre><p>##4. 电话窃听器案例<br>    new Thread(){}.start();   //实时更新  有可能被杀死 但如果放在服务里面是不会被被动杀死的，除非主动调用一些方法</p>
+<pre><code>服务和线程的区别：  
+</code></pre><p>###新的API TelephonyManager  通过getSystenService（TELEPHONY_SERVICE）</p>
+<ol>
+<li><p>获取电话管理者的实例</p>
+<pre><code>//1. 获取电话管理者的实例
+TelephonyManager tm =  (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+</code></pre></li>
+</ol>
+<ol>
+<li><p>注册一个电话状态的监听</p>
+<pre><code>//2. 注册一个电话状态的监听
+tm.listen(new MyPhoneStateListener(),PhoneStateListener.LISTEN_CALL_STATE);
+</code></pre></li>
+<li><p>在监听器中实现onCallStateChanged方法</p>
+<pre><code>//当电话的状态发生变化时调用
+ @Override
+ public void onCallStateChanged(int state, String incomingNumber) {
+     super.onCallStateChanged(state, incomingNumber);
 
-&lt;TextView
-    style = &quot;@style/my_style&quot;
+ //判断具体是哪一个 电话状态
+ switch (state){
 
-/&gt;
-</code></pre><p>##共同点： 定义的方式一样</p>
-<p>##不用点： style作用的范围比较窄，（控件 button textView） theme 作用在activity或者Application节点下</p>
-<p>#2. android中国际化 i18n</p>
-<pre><code>需要在res文件下新增values-zh、values-en......国家环境目录，并设置相应的string的值
-</code></pre><p>#3. 常见对话框</p>
-<pre><code>AlertDialog
+     case TelephonyManager.CALL_STATE_RINGING:  //响铃状态
+         System.out.println(&quot;现在是响铃状态，需要开始准备录音机&quot;);
 
-1.普通对话框：
-             AlertDialog.Builder builder = new Builder(this);
-             builder.setTitle(&quot;警告&quot;);
-             builder.setMessage(&quot;世界&quot;)
-             builder.setPositiveButton(&quot;确定&quot;，new onClickedListener(){
+         break;
 
+     case TelephonyManager.CALL_STATE_OFFHOOK:  //接通状态
+         System.out.print(&quot;开始录音&quot;);
 
+         //1. 获取MediaRecorder实例
+         recorder = new MediaRecorder();
 
-                    });
-             builder.show();
+         //2. 设置音频的来源
+         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 
-2.单选对话框:
-            AlertDialog.Builder builder = new Builder(this);
-             builder.setTitle(&quot;选课&quot;);
-            String items[] = {&quot;android&quot;,&quot;c++&quot;,&quot;c&quot;,&quot;c#&quot;};
-            builder.setSingleChoiceItems();  //
-             builder.show();                
+         //3. 设置音频的输出格式
+         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 
-3.多选对话框
-4.进度条对话框
-</code></pre><p>##补充：<br>        this 继承Context，子类中含有父类中没有的属性，（对话框不能使用getApplicationContext()）<br>        getApplicationContext(); //获得Context</p>
-<p>##android 中的动画<br>    1.属性动画：</p>
-<pre><code>2.补间动画
-3.帧动画 ：
-        加载一系列的图片资源，在res文件下新建drawable文件，并将一系列的图片放在此文件中，在activity中调用方法，实际上就是一系列图片的连续播放
-</code></pre>
+         //4. 设置音频的编码方式
+         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+         //设置音频文件的保存路径
+         recorder.setOutputFile(&quot;/mnt/sdcard/luyin.avi&quot;);
+
+         try {
+             recorder.prepare();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+         //开始录音
+         recorder.start();
+
+         System.out.println(&quot;正在录音&quot;);
+</code></pre></li>
+</ol>
+<pre><code>        break;
+
+    case TelephonyManager.CALL_STATE_IDLE:   //空闲状态
+        if(recorder != null){
+            recorder.stop();    //停止录音
+           // recorder.reset();   // You can reuse the object by going back to setAudioSource() step
+            recorder.release();  // Now the object cannot be reused
+            recorder = null;
+        }
+
+        break;
+
+    }
+}
+</code></pre><ol>
+<li><p>同时需要加上相应的权限：</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+</code></pre></li>
+</ol>
+<p>##5. 在服务中注册特殊的广播接收者<br>    通过startService开启服务，该服务会在后台长期执行，直到被手动销毁！！！！而如果在广播接收者的onReceive方法中注册，一旦退出程序，注册的广播就会失效！！！</p>
+<pre><code>所以在service的onCreate方法中注册广播接收者，代替在MainFest文件中注册。
+</code></pre><p>步骤如下：( day 08 )</p>
+<pre><code>1. 创建广播接收者
+2. 创建一个服务，用来注册广播接收者的一些参数
+3. 配置service
+</code></pre><p>##6. bindService开启服务  与  StartService开启服务</p>
+<pre><code>bindService： 连接到服务 刚开始建立服务时会调 onCreate 和 onBind 方法  其对应unbindService 方法,否则会报 leak错误，
+</code></pre><p><strong>特点:   一旦程序退出service就会被销毁，通过bind 方法开启服务，不能在设置中查到， 相当于一个隐形的服务   bindService 不能多次解绑，多次解绑会报错</strong></p>
+<pre><code>startService: 
+</code></pre><p>###引入bindService方法的原因：</p>
+<pre><code>为了能够调用服务里的方法，为了能够更好的说明，下面介绍一个例子：  实现通过服务中的onBind 方法调用服务里的方法
+
+步骤：
+1. 创建一个Service ,在service里添加一个方法，用来被调用 ;
+2. 创建一个中间人对象Mybinder，继承IBinder的子类 Binder，并实现调用所需的方法 ;
+3. 在onBinder 方法中返回 MyBinder对象 ；
+4. 在Activity 的 OnCreate 的方法中调用bindService方法，其中在参数的接口中将MyBinder对象取到 ；
+5. 在点击事件中 通过此对象调用service里的方法
+</code></pre><p>##7. 百度音乐盒框架</p>
+<ol>
+<li>需求： 既想让服务在后台长期运行，又想调用服务里的方法，利用混合方式开启服务，但顺序一定是 </li>
+</ol>
+<pre><code>1. 先开启startService 保证服务在后台长期运行；
+2. 再开启 bindService 获取 服务里的方法；
+3. 接着 调用 unbindService ；
+4. 最后调用stopService 停止服务。
+
+**注意此时，调用unbind方法不会销毁服务 从而能够保证服务能够在后台长期运行。**
+</code></pre><p>##8. aidl的介绍b  android interface defination language  接口定义语言</p>
+<pre><code>1. 远程服务： 运行在其他应用程序的服务；
+2. 本地服务： 运行在自己应用程序的服务；
+3. 进行进程之间的通信  IPC 
+</code></pre><p>###与之前那的区别是：</p>
+<pre><code>1. 需要添加将接口文件更改为.aidl的格式；
+2. 在aidl文件中是不识别public 标识的，所以应该去掉；
+3. 将中间人对象继承IBinder更改为继承 Stub对象；
+4. 在启动远程服务时，需要调用隐式意图； 
+5. 在获取中间人对象时，需要进行类型的转换，需要调用 Stub.as...方法；
+6. 为了能够在两个应用中保持相同的aidl文件，需要相同的包名；
+</code></pre><p>##7. 内容提供者（ContentProvider）</p>
+
           
         
       
